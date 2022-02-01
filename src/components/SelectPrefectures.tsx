@@ -18,13 +18,13 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   // チェックを切り替えたときに選択一覧の配列を更新する
   function handleCheckboxChange(checked: boolean, prefCode: number) {
     // 引数のprefCodeと一致するものを削除する
-    const _new = prop.selectedPrefs.filter((pref, idx) => pref != prefCode);
+    const _new = prop.selectedPrefs.filter((pref) => pref != prefCode);
     // 選択したときは要素を追加
     if (checked) {
       _new.push(prefCode);
     }
     // 親の配列を更新
-    prop.setSelectedPrefs([..._new]);
+    prop.setSelectedPrefs(_new);
   }
 
   return (
