@@ -1,27 +1,25 @@
 import type { NextPage } from "next";
 import styles from "@/styles/Home.module.scss";
 
-import { usePrefectures } from "@/libs/ResasApi";
+import SelectPrefectures from "@/components/SelectPrefectures";
+import { useState } from "react";
 
 const Home: NextPage = () => {
-  // 都道府県一覧を取得
-  const { prefectures, isLoading, isError } = usePrefectures();
+  // 選択中の都道府県のPrefCode
+  const [selectedPrefs, setSelectedPrefs] = useState<number[]>([]);
 
   return (
     <>
       {/* 都道府県一覧 */}
+      <SelectPrefectures
+        selectedPrefs={selectedPrefs}
+        setSelectedPrefs={setSelectedPrefs}
+      />
       <div>
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <>
-            {prefectures()
-              ? prefectures()!.map((prefecture, prefIdx) => (
-                  <div key={prefIdx}>{prefecture["prefName"]}</div>
-                ))
-              : "Error"}
-          </>
-        )}
+        <p>選択中の都道府県</p>
+        {selectedPrefs.map((pref, prefIdx) => (
+          <span key={prefIdx}>{pref} </span>
+        ))}
       </div>
     </>
   );
