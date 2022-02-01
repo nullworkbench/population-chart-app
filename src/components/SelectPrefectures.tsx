@@ -16,19 +16,15 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   const { prefectures, isLoading, isError } = usePrefectures();
 
   // チェックを切り替えたときに選択一覧の配列を更新する
-  function handleCheckboxChange(
-    e: ChangeEvent<HTMLInputElement>,
-    prefCode: number
-  ) {
-    if (e.target.value) {
-      // 選択したとき
-      // 引数のprefCodeと一致しないもののみを返す（一致するものを削除する）
-      const _new = prop.selectedPrefs.filter((pref, idx) => pref != prefCode);
+  function handleCheckboxChange(checked: boolean, prefCode: number) {
+    // 引数のprefCodeと一致するものを削除する
+    const _new = prop.selectedPrefs.filter((pref, idx) => pref != prefCode);
+    // 選択したときは要素を追加
+    if (checked) {
       _new.push(prefCode);
-      prop.setSelectedPrefs([..._new]);
-    } else {
-      // 選択を解除したとき
     }
+    // 親の配列を更新
+    prop.setSelectedPrefs([..._new]);
   }
 
   return (
@@ -44,7 +40,10 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                     type="checkbox"
                     id={"pref" + prefecture.prefCode}
                     onChange={(e) =>
-                      handleCheckboxChange(e, prefecture.prefCode)
+                      handleCheckboxChange(
+                        e.target.checked,
+                        prefecture.prefCode
+                      )
                     }
                   />
                   <label htmlFor={"pref" + prefecture.prefCode}>
