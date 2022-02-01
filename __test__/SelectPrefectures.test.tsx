@@ -6,14 +6,16 @@ import "@testing-library/jest-dom/extend-expect";
 import SelectPrefectures from "@/components/SelectPrefectures";
 import { SWRConfig } from "swr";
 
+// テスト内容
 describe("コンポーネントを描画", () => {
-  it("47都道府県のチェックボックスが描画される", async () => {
+  // テスト１
+  test("Loading...が表示される", async () => {
+    // SWRのキャッシュを無効化して描画
     render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
         <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
       </SWRConfig>
     );
-
-    expect(await screen.findByText("北海道"));
+    expect(screen.getByTestId("loadingText"));
   });
 });

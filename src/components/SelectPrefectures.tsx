@@ -26,40 +26,38 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
     // 親の配列を更新
     prop.setSelectedPrefs(_new);
   }
-
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <p data-testid="loadingText">Loading...</p>
       ) : (
         <Wrapper>
-          {prefectures()
-            ? prefectures()!.map((prefecture, prefIdx) => (
-                <CheckBoxWrap
-                  key={prefIdx}
-                  style={{
-                    // 選択中の場合は背景色をつける
-                    background: prop.selectedPrefs.includes(prefecture.prefCode)
-                      ? "#67e8f9"
-                      : "none",
-                  }}
-                >
-                  <input
-                    type="checkbox"
-                    id={"pref" + prefecture.prefCode}
-                    onChange={(e) =>
-                      handleCheckboxChange(
-                        e.target.checked,
-                        prefecture.prefCode
-                      )
-                    }
-                  />
-                  <label htmlFor={"pref" + prefecture.prefCode}>
-                    {prefecture.prefName}
-                  </label>
-                </CheckBoxWrap>
-              ))
-            : "Error"}
+          {prefectures() ? (
+            prefectures()!.map((prefecture, prefIdx) => (
+              <CheckBoxWrap
+                key={prefIdx}
+                style={{
+                  // 選択中の場合は背景色をつける
+                  background: prop.selectedPrefs.includes(prefecture.prefCode)
+                    ? "#67e8f9"
+                    : "none",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  id={"pref" + prefecture.prefCode}
+                  onChange={(e) =>
+                    handleCheckboxChange(e.target.checked, prefecture.prefCode)
+                  }
+                />
+                <label htmlFor={"pref" + prefecture.prefCode}>
+                  {prefecture.prefName}
+                </label>
+              </CheckBoxWrap>
+            ))
+          ) : (
+            <p>An Error Occured. Please Reload.</p>
+          )}
         </Wrapper>
       )}
     </div>
