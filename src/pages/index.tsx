@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         ) : (
           <>
             {prefectures()
-              ? prefectures().map((prefecture, prefIdx) => (
+              ? prefectures()!.map((prefecture, prefIdx) => (
                   <div key={prefIdx}>{prefecture["prefName"]}</div>
                 ))
               : "Error"}

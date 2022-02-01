@@ -13,6 +13,12 @@ const fetcher = (url: string) =>
     headers,
   }).then((res) => res.json());
 
+//
+type Prefecture = {
+  prefCode: number;
+  prefName: string;
+};
+
 // 都道府県情報を取得する
 export function usePrefectures() {
   const apiURL = endPoint + "/prefectures";
@@ -20,10 +26,10 @@ export function usePrefectures() {
 
   return {
     // データは整形して返す
-    prefectures: (): [] | null => {
+    prefectures: (): Prefecture[] | null => {
       // messageがnullの場合は取得が成功している
       if (data["message"] == null) {
-        return data["result"];
+        return data["result"] as Prefecture[];
       } else {
         return null;
       }
