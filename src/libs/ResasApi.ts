@@ -43,3 +43,23 @@ export function usePrefectures() {
     isError: error,
   };
 }
+
+// 総人口情報を取得する
+export function usePopulation(prefCode: number) {
+  const apiURL = `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`;
+  const { data, error } = useSWR(apiURL, fetcher);
+
+  return {
+    population: (): Population[] | null => {
+      // undefinedの場合は取得中なので早期return
+      if (data == undefined) return null;
+      // messageがnullの場合は取得が成功している
+      if (data["message"] == null) {
+        return data["result"]["data"][0]["data"] as Population[];
+      }
+      return null;
+    },
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
