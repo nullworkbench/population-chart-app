@@ -1,5 +1,10 @@
 // テスト用ライブラリ
-import { cleanup, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
@@ -61,5 +66,28 @@ describe("コンポーネントを描画", () => {
       </SWRConfig>
     );
     expect(screen.getByTestId("loadingText"));
+  });
+
+  // テスト２
+  test("47都道府県のチェックボックスが描画される", async () => {
+    // SWRのキャッシュを無効化して描画
+    const { asFragment } = render(
+      <SWRConfig value={{ dedupingInterval: 0 }}>
+        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+      </SWRConfig>
+    );
+
+    // この要素が消えるまでテストを終了しないで待つ
+    await waitForElementToBeRemoved(() =>
+      // まずはSWRが取得中なのでLoadingが表示される
+      expect(screen.getByTestId("loadingText"))
+    );
+    // 表示が完了すると、都道府県の情報が出る
+    expect(screen.getByText("北海道"));
+    expect(screen.getByText("青森県"));
+    expect(screen.getByText("岩手県"));
+
+    // 以前のテスト時のスナップショットと一致するか
+    expect(asFragment()).toMatchSnapshot();
   });
 });

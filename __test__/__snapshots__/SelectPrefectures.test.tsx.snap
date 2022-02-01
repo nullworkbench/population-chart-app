@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`コンポーネントを描画 47都道府県のチェックボックスが描画される 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="sc-bdvvtL gatNFc"
+    >
+      <div
+        class="sc-gsDKAQ cFnCUf"
+        style="background: none;"
+      >
+        <input
+          id="pref1"
+          type="checkbox"
+        />
+        <label
+          for="pref1"
+        >
+          北海道
+        </label>
+      </div>
+      <div
+        class="sc-gsDKAQ cFnCUf"
+        style="background: none;"
+      >
+        <input
+          id="pref2"
+          type="checkbox"
+        />
+        <label
+          for="pref2"
+        >
+          青森県
+        </label>
+      </div>
+      <div
+        class="sc-gsDKAQ cFnCUf"
+        style="background: none;"
+      >
+        <input
+          id="pref3"
+          type="checkbox"
+        />
+        <label
+          for="pref3"
+        >
+          岩手県
+        </label>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
