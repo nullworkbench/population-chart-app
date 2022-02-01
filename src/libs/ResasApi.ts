@@ -7,6 +7,12 @@ type Prefecture = {
   prefName: string;
 };
 
+// 総人口の型
+type Population = {
+  prefCode: number;
+  data: { year: number; value: number }[];
+};
+
 // RESAS APIのエンドポイント
 const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
 
