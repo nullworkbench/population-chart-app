@@ -35,7 +35,15 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
         <Wrapper>
           {prefectures()
             ? prefectures()!.map((prefecture, prefIdx) => (
-                <CheckBoxWrap key={prefIdx}>
+                <CheckBoxWrap
+                  key={prefIdx}
+                  style={{
+                    // 選択中の場合は背景色をつける
+                    background: prop.selectedPrefs.includes(prefecture.prefCode)
+                      ? "#67e8f9"
+                      : "none",
+                  }}
+                >
                   <input
                     type="checkbox"
                     id={"pref" + prefecture.prefCode}
