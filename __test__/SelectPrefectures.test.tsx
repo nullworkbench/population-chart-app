@@ -14,10 +14,11 @@ import SelectPrefectures from "@/components/SelectPrefectures";
 import { SWRConfig } from "swr";
 
 // APIのモックサーバーを立てる
+const apiURL = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
 const handlers = [
   rest.get(
     // テスト中の以下のリクエストはこのモックサーバーに送られる
-    "https://opendata.resas-portal.go.jp/api/v1/prefectures",
+    apiURL,
     // ダミーデータ
     (req, res, ctx) => {
       return res(
@@ -61,7 +62,7 @@ describe("コンポーネントを描画", () => {
   test("Loading...が表示される", async () => {
     // SWRのキャッシュを無効化して描画
     render(
-      <SWRConfig value={{ dedupingInterval: 0 }}>
+      <SWRConfig value={{ provider: () => new Map() }}>
         <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
       </SWRConfig>
     );
@@ -72,7 +73,7 @@ describe("コンポーネントを描画", () => {
   test("47都道府県のチェックボックスが描画される", async () => {
     // SWRのキャッシュを無効化して描画
     const { asFragment } = render(
-      <SWRConfig value={{ dedupingInterval: 0 }}>
+      <SWRConfig value={{ provider: () => new Map() }}>
         <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
       </SWRConfig>
     );
@@ -89,5 +90,29 @@ describe("コンポーネントを描画", () => {
 
     // 以前のテスト時のスナップショットと一致するか
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  // テスト３
+  test("APIからの取得時にエラーが発生した場合", async () => {
+    // わざとエラーを発生させるためにモックサーバーを上書き
+    server.use(
+      rest.get(apiURL, (req, res, ctx) => {
+        return res(ctx.status(403));
+      })
+    );
+    // SWRのキャッシュを無効化して描画
+    render(
+      <SWRConfig value={{ provider: () => new Map() }}>
+        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+      </SWRConfig>
+    );
+    // この要素が消えるまでテストを終了しないで待つ
+    await waitForElementToBeRemoved(() =>
+      // まずはSWRが取得中なのでLoadingが表示される
+      expect(screen.getByTestId("loadingText"))
+    );
+
+    // エラー文が出ていることを確認
+    expect(screen.getByTestId("errorMessage"));
   });
 });

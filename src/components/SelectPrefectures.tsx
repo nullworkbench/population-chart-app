@@ -56,7 +56,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
               </CheckBoxWrap>
             ))
           ) : (
-            <p>An Error Occured. Please Reload.</p>
+            <p data-testid="errorMessage">An Error Occured. Please Reload.</p>
           )}
         </Wrapper>
       )}

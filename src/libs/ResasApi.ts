@@ -25,6 +25,8 @@ export function usePrefectures() {
   return {
     // データは整形して返す
     prefectures: (): Prefecture[] | null => {
+      // undefinedの場合は取得中なので早期return
+      if (data == undefined) return null;
       // messageがnullの場合は取得が成功している
       if (data["message"] == null) {
         return data["result"] as Prefecture[];
