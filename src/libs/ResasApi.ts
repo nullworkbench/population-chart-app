@@ -19,7 +19,15 @@ export function usePrefectures() {
   const { data, error } = useSWR(apiURL, fetcher);
 
   return {
-    prefectures: data,
+    // データは整形して返す
+    prefectures: (): [] | null => {
+      // messageがnullの場合は取得が成功している
+      if (data["message"] == null) {
+        return data["result"];
+      } else {
+        return null;
+      }
+    },
     isLoading: !error && !data,
     isError: error,
   };
