@@ -1,3 +1,4 @@
+import axios from "axios";
 import useSWR from "swr";
 
 // 都道府県の型
@@ -10,14 +11,11 @@ type Prefecture = {
 const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
 
 // RESAS APIキーをheaderに設定
-const headers = new Headers();
-headers.set("X-API-KEY", process.env.NEXT_PUBLIC_RESAS_API_KEY!);
+const headers = { "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API_KEY! };
 
 // 共通で利用するフェッチャー
 const fetcher = (url: string) =>
-  fetch(url, {
-    headers,
-  }).then((res) => res.json());
+  axios.get(url, { headers }).then((res) => res.data);
 
 // 都道府県情報を取得する
 export function usePrefectures() {
