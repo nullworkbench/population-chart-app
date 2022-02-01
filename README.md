@@ -17,3 +17,21 @@
 - [RESAS(地域経済分析システム) API](https://opendata.resas-portal.go.jp/)
 
 
+## 実行方法
+
+1. リポジトリのクローン（環境変数は別途ご用意ください）
+```
+git clone https://github.com/nullworkbench/population-chart-app.git
+```
+2. パッケージのインストール
+```
+npm install
+```
+3. 開発サーバー起動
+```
+npm run dev
+```
+4. テスト実行
+```
+npm run test
+```
