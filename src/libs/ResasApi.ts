@@ -1,5 +1,11 @@
 import useSWR from "swr";
 
+// 都道府県の型
+type Prefecture = {
+  prefCode: number;
+  prefName: string;
+};
+
 // RESAS APIのエンドポイント
 const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
 
@@ -12,12 +18,6 @@ const fetcher = (url: string) =>
   fetch(url, {
     headers,
   }).then((res) => res.json());
-
-//
-type Prefecture = {
-  prefCode: number;
-  prefName: string;
-};
 
 // 都道府県情報を取得する
 export function usePrefectures() {
