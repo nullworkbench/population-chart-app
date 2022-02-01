@@ -12,7 +12,7 @@ const SelectPrefectures: React.FC = () => {
       {isLoading ? (
         <p>Loading...</p>
       ) : (
-        <>
+        <Wrapper>
           {prefectures()
             ? prefectures()!.map((prefecture, prefIdx) => (
                 <CheckBox
@@ -22,18 +22,27 @@ const SelectPrefectures: React.FC = () => {
                 />
               ))
             : "Error"}
-        </>
+        </Wrapper>
       )}
     </div>
   );
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const CheckBox: React.FC<{ prefCode: number; prefName: string }> = (prop) => {
+  const Div = styled.div`
+    width: 6rem;
+    padding: 1rem 0.5rem;
+  `;
   return (
-    <div>
+    <Div>
       <input type="checkbox" id={"pref" + prop.prefCode} />
       <label htmlFor={"pref" + prop.prefCode}>{prop.prefName}</label>
-    </div>
+    </Div>
   );
 };
 
