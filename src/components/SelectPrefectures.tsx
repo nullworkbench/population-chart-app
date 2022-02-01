@@ -1,4 +1,5 @@
 // 都道府県を選択するチェックボックス
+import styled from "styled-components";
 
 import { usePrefectures } from "@/libs/ResasApi";
 
@@ -14,11 +15,24 @@ const SelectPrefectures: React.FC = () => {
         <>
           {prefectures()
             ? prefectures()!.map((prefecture, prefIdx) => (
-                <div key={prefIdx}>{prefecture["prefName"]}</div>
+                <CheckBox
+                  key={prefIdx}
+                  prefCode={prefecture.prefCode}
+                  prefName={prefecture.prefName}
+                />
               ))
             : "Error"}
         </>
       )}
+    </div>
+  );
+};
+
+const CheckBox: React.FC<{ prefCode: number; prefName: string }> = (prop) => {
+  return (
+    <div>
+      <input type="checkbox" id={"pref" + prop.prefCode} />
+      <label htmlFor={"pref" + prop.prefCode}>{prop.prefName}</label>
     </div>
   );
 };
