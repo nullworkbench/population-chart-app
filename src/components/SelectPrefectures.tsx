@@ -28,10 +28,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                   type="checkbox"
                   id={"pref" + prefecture.prefCode}
                   onChange={(e) =>
-                    prop.handleCheckboxChange(
-                      e.target.checked,
-                      prefecture.prefCode
-                    )
+                    prop.handleCheckboxChange(e.target.checked, prefecture)
                   }
                 />
                 <label htmlFor={"pref" + prefecture.prefCode}>
