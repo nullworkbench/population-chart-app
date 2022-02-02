@@ -7,6 +7,12 @@ type Prefecture = {
   prefName: string;
 };
 
+// 総人口の型
+type Population = {
+  prefCode: number;
+  data: { year: number; value: number }[];
+};
+
 // RESAS APIのエンドポイント
 const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
 
@@ -30,6 +36,29 @@ export function usePrefectures() {
       // messageがnullの場合は取得が成功している
       if (data["message"] == null) {
         return data["result"] as Prefecture[];
+      }
+      return null;
+    },
+    isLoading: !error && !data,
+    isError: error,
+  };
+}
+
+// 総人口情報を取得する
+export function usePopulation(prefCode: number) {
+  const apiURL = `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`;
+  const { data, error } = useSWR(apiURL, fetcher);
+
+  return {
+    population: (): Population | null => {
+      // undefinedの場合は取得中なので早期return
+      if (data == undefined) return null;
+      // messageがnullの場合は取得が成功している
+      if (data["message"] == null) {
+        return {
+          prefCode,
+          data: data["result"]["data"][0]["data"],
+        };
       }
       return null;
     },
