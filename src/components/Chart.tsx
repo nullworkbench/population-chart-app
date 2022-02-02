@@ -2,6 +2,9 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
+// 総人口を取得する関数
+import { usePopulation } from "@/libs/ResasApi";
+
 type Props = {
   selectedPrefs: number[];
 };
@@ -9,6 +12,13 @@ type Props = {
 const Chart: React.FC<Props> = (prop) => {
   // グラフに表示する都道府県のprefCode
   const prefCodes = prop.selectedPrefs;
+
+  // prefCodeから総人口を取得
+  const { population, isLoading, isError } = usePopulation(34);
+
+  if (!isLoading) {
+    console.log(population());
+  }
 
   const chartOptions = {
     //グラフタイトル
