@@ -1,13 +1,13 @@
 // 都道府県を選択するチェックボックス
 
-import { ChangeEvent } from "react";
 import styled from "styled-components";
 
+import { Prefecture } from "@/libs/ResasApi";
 import { usePrefectures } from "@/libs/ResasApi";
 
 type Props = {
   // 親のuseStateを呼び出す
-  selectedPrefs: number[];
+  selectedPrefs: Prefecture[];
   handleCheckboxChange: Function;
 };
 
@@ -23,15 +23,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
         <Wrapper>
           {prefectures() ? (
             prefectures()!.map((prefecture, prefIdx) => (
-              <CheckBoxWrap
-                key={prefIdx}
-                style={{
-                  // 選択中の場合は背景色をつける
-                  background: prop.selectedPrefs.includes(prefecture.prefCode)
-                    ? "#67e8f9"
-                    : "none",
-                }}
-              >
+              <CheckBoxWrap key={prefIdx}>
                 <input
                   type="checkbox"
                   id={"pref" + prefecture.prefCode}
