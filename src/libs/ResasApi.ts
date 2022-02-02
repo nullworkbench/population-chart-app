@@ -81,6 +81,7 @@ export async function getPopulation(
     const objKeys = Object.keys(res.data);
     if (objKeys.includes("statusCode")) {
       // statusCodeがあるときは何らかのエラーが発生している
+      console.log("Error getting data");
       return;
     } else if (
       objKeys.length == 1 &&
@@ -88,12 +89,14 @@ export async function getPopulation(
       res.data[objKeys[0]] == null
     ) {
       // 429 Too Many Requests
+      console.log("429 Too Many Requests");
       return;
     } else if (
       objKeys.includes("message") &&
       res.data[objKeys.indexOf("message")] == null
     ) {
       // 正しく取得できている
+      console.log("getting data successfully");
       return { prefCode, data: res.data["result"]["data"][0]["data"] };
     }
     return;
