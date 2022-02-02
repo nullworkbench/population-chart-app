@@ -34,6 +34,10 @@ const Chart: React.FC<Props> = (prop) => {
   // prefCodeから総人口を取得
   async function getPopulations() {
     for (const prefCode of prefCodes) {
+      // すでにグラフに追加されているものはスキップ
+      if (chartOptions.series.find((series) => series.prefCode == prefCode))
+        continue;
+      // 情報を取得してグラフへ描画
       const population = await getPopulation(prefCode);
       if (population) {
         updateChart(population);

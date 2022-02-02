@@ -72,7 +72,7 @@ export async function getPopulation(
   prefCode: number
 ): Promise<Population | void> {
   try {
-    // 成功
+    console.log("get");
     const res = await axios.get(
       `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
       { headers }
