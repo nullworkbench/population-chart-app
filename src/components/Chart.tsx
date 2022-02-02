@@ -40,19 +40,19 @@ const Chart: React.FC<Props> = (prop) => {
       // 情報を取得してグラフへ描画
       const population = await getPopulation(pref.prefCode);
       if (population) {
-        updateChart(population);
+        updateChart(population, pref.prefName);
       }
     }
   }
 
-  function updateChart(newData: Population) {
+  function updateChart(newData: Population, prefName: string) {
     setChartOptions({
       ...chartOptions,
       series: [
         ...chartOptions.series,
         {
           type: "line",
-          name: `${newData.prefCode}`,
+          name: prefName,
           data: newData.data.map((d) => d.value),
         },
       ],
