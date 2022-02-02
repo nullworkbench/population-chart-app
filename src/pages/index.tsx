@@ -16,13 +16,8 @@ const Home: NextPage = () => {
         selectedPrefs={selectedPrefs}
         setSelectedPrefs={setSelectedPrefs}
       />
-      <div>
-        <p>選択中の都道府県</p>
-        {selectedPrefs.map((pref, prefIdx) => (
-          <span key={prefIdx}>{pref} </span>
-        ))}
-      </div>
-      <Chart />
+      {/* グラフ */}
+      <Chart selectedPrefs={selectedPrefs} />
     </>
   );
 };

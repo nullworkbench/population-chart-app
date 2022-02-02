@@ -2,7 +2,14 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const Chart: React.FC = () => {
+type Props = {
+  selectedPrefs: number[];
+};
+
+const Chart: React.FC<Props> = (prop) => {
+  // グラフに表示する都道府県のprefCode
+  const prefCodes = prop.selectedPrefs;
+
   const chartOptions = {
     //グラフタイトル
     title: { text: "都道府県別の総人口推移" },
@@ -20,9 +27,14 @@ const Chart: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
+      <div>
+        {prefCodes.map((code, idx) => (
+          <span key={idx}>{code} </span>
+        ))}
+      </div>
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
+    </>
   );
 };
 
