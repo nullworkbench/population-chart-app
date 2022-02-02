@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import useSWR from "swr";
 
 // 都道府県の型
@@ -8,7 +8,7 @@ type Prefecture = {
 };
 
 // 総人口の型
-type Population = {
+export type Population = {
   prefCode: number;
   data: { year: number; value: number }[];
 };
@@ -65,4 +65,40 @@ export function usePopulation(prefCode: number) {
     isLoading: !error && !data,
     isError: error,
   };
+}
+
+// 指定されたprefCodeから総人口情報を取得する
+export async function getPopulation(
+  prefCode: number
+): Promise<Population | void> {
+  try {
+    // 成功
+    const res = await axios.get(
+      `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
+      { headers }
+    );
+
+    const objKeys = Object.keys(res.data);
+    if (objKeys.includes("statusCode")) {
+      // statusCodeがあるときは何らかのエラーが発生している
+      return;
+    } else if (
+      objKeys.length == 1 &&
+      objKeys[0] == "message" &&
+      res.data[objKeys[0]] == null
+    ) {
+      // 429 Too Many Requests
+      return;
+    } else if (
+      objKeys.includes("message") &&
+      res.data[objKeys.indexOf("message")] == null
+    ) {
+      // 正しく取得できている
+      return { prefCode, data: res.data["result"]["data"][0]["data"] };
+    }
+    return;
+  } catch (error) {
+    // エラー
+    return;
+  }
 }
