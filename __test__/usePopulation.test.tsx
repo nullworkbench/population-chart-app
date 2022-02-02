@@ -13,7 +13,7 @@ import population from "./apiMockData/population.json";
 
 // APIのモックサーバーを立てる
 const apiURL =
-  "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=1&cityCode=-";
+  "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear";
 const handlers = [
   rest.get(
     // テスト中の以下のリクエストはこのモックサーバーに送られる
