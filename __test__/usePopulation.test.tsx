@@ -10,6 +10,7 @@ import { usePopulation } from "@/libs/ResasApi";
 
 // テスト用データ
 import population from "./apiMockData/population.json";
+const prefCode = 1;
 
 // APIのモックサーバーを立てる
 const apiURL =
@@ -40,7 +41,7 @@ afterAll(() => {
 describe("usePopulationのテスト", () => {
   test("APIから正常に取得できるか確認", async () => {
     // usePopulation実行
-    const { result } = renderHook(() => usePopulation(1));
+    const { result } = renderHook(() => usePopulation(prefCode));
 
     // isLoadingがfalseになるまで待つ
     await waitFor(() => {
@@ -49,7 +50,10 @@ describe("usePopulationのテスト", () => {
     });
 
     // APIのレスポンスから総人口を切り出したもの
-    const expectedResponse = population.result.data[0].data;
+    const expectedResponse = {
+      prefCode: prefCode,
+      data: population.result.data[0].data,
+    };
     // データがきちんと整形されて取得されているか確認
     expect(result.current.population()).toStrictEqual(expectedResponse);
   });

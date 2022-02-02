@@ -50,12 +50,15 @@ export function usePopulation(prefCode: number) {
   const { data, error } = useSWR(apiURL, fetcher);
 
   return {
-    population: (): Population[] | null => {
+    population: (): Population | null => {
       // undefinedの場合は取得中なので早期return
       if (data == undefined) return null;
       // messageがnullの場合は取得が成功している
       if (data["message"] == null) {
-        return data["result"]["data"][0]["data"] as Population[];
+        return {
+          prefCode,
+          data: data["result"]["data"][0]["data"],
+        };
       }
       return null;
     },
