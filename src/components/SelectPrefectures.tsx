@@ -1,31 +1,20 @@
 // 都道府県を選択するチェックボックス
 
-import { ChangeEvent } from "react";
 import styled from "styled-components";
 
+import { Prefecture } from "@/libs/ResasApi";
 import { usePrefectures } from "@/libs/ResasApi";
 
 type Props = {
   // 親のuseStateを呼び出す
-  selectedPrefs: number[];
-  setSelectedPrefs: Function;
+  selectedPrefs: Prefecture[];
+  handleCheckboxChange: Function;
 };
 
 const SelectPrefectures: React.FC<Props> = (prop) => {
   // 都道府県一覧を取得
   const { prefectures, isLoading, isError } = usePrefectures();
 
-  // チェックを切り替えたときに選択一覧の配列を更新する
-  function handleCheckboxChange(checked: boolean, prefCode: number) {
-    // 引数のprefCodeと一致するものを削除する
-    const _new = prop.selectedPrefs.filter((pref) => pref != prefCode);
-    // 選択したときは要素を追加
-    if (checked) {
-      _new.push(prefCode);
-    }
-    // 親の配列を更新
-    prop.setSelectedPrefs(_new);
-  }
   return (
     <div>
       {isLoading ? (
@@ -34,20 +23,15 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
         <Wrapper>
           {prefectures() ? (
             prefectures()!.map((prefecture, prefIdx) => (
-              <CheckBoxWrap
-                key={prefIdx}
-                style={{
-                  // 選択中の場合は背景色をつける
-                  background: prop.selectedPrefs.includes(prefecture.prefCode)
-                    ? "#67e8f9"
-                    : "none",
-                }}
-              >
+              <CheckBoxWrap key={prefIdx}>
                 <input
                   type="checkbox"
                   id={"pref" + prefecture.prefCode}
                   onChange={(e) =>
-                    handleCheckboxChange(e.target.checked, prefecture.prefCode)
+                    prop.handleCheckboxChange(
+                      e.target.checked,
+                      prefecture.prefCode
+                    )
                   }
                 />
                 <label htmlFor={"pref" + prefecture.prefCode}>

@@ -2,7 +2,7 @@ import axios, { AxiosError } from "axios";
 import useSWR from "swr";
 
 // 都道府県の型
-type Prefecture = {
+export type Prefecture = {
   prefCode: number;
   prefName: string;
 };
