@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.scss";
 
 import SelectPrefectures from "@/components/SelectPrefectures";
 import { useState } from "react";
+import Chart from "@/components/Chart";
 
 const Home: NextPage = () => {
   // 選択中の都道府県のPrefCode
@@ -21,6 +22,7 @@ const Home: NextPage = () => {
           <span key={prefIdx}>{pref} </span>
         ))}
       </div>
+      <Chart />
     </>
   );
 };
