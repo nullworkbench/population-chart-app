@@ -1,0 +1,5 @@
+const Chart: React.FC = () => {
+  return <div></div>;
+};
+
+export default Chart;
