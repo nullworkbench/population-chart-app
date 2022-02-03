@@ -83,31 +83,17 @@ export async function getPopulation(
       `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
       { headers }
     );
-
-    const objKeys = Object.keys(res.data);
-    if (objKeys.includes("statusCode")) {
-      // statusCodeがあるときは何らかのエラーが発生している
-      console.log("Error getting data");
+    // Resas独自のエラーをチェック
+    const ResasError = isRESASError(res.data);
+    if (ResasError) {
+      console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
       return;
-    } else if (
-      objKeys.length == 1 &&
-      objKeys[0] == "message" &&
-      res.data[objKeys[0]] == null
-    ) {
-      // 429 Too Many Requests
-      console.log("429 Too Many Requests");
-      return;
-    } else if (
-      objKeys.includes("message") &&
-      res.data[objKeys.indexOf("message")] == null
-    ) {
-      // 正しく取得できている
-      console.log("getting data successfully");
-      return { prefCode, data: res.data["result"]["data"][0]["data"] };
     }
-    return;
+    // 成功
+    return { prefCode, data: res.data["result"]["data"][0]["data"] };
   } catch (error) {
     // エラー
+    console.log(`Error getting population: ${error}`);
     return;
   }
 }
@@ -117,7 +103,6 @@ export function isRESASError(data: any): RESASError | void {
   const objKeys = Object.keys(data);
   if (objKeys.includes("statusCode")) {
     // statusCodeがあるときは何らかのエラーが発生している
-    console.log("Error getting data");
     return {
       statusCode: Number(data["statusCode"]),
       errorMessage: data["message"],
