@@ -20,7 +20,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   return (
     <div>
       <div>
-        <Checkbox />
+        <Checkbox checked={true} label="鹿児島県" />
       </div>
       {isLoading ? (
         <p data-testid="loadingText">Loading...</p>

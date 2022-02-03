@@ -1,10 +1,19 @@
 import styled from "styled-components";
 
-const Checkbox: React.FC = () => {
+type Props = {
+  checked: boolean;
+  label: string;
+  handleOnChange: Function;
+};
+
+const Checkbox: React.FC<Props> = (prop) => {
   return (
     <Label>
-      <Input />
-      <span>北海道</span>
+      <Input
+        defaultChecked={prop.checked}
+        onChange={(e) => prop.handleOnChange(e.target.value)}
+      />
+      <span>{prop.label}</span>
     </Label>
   );
 };
