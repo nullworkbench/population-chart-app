@@ -29,4 +29,12 @@ describe("RESAS-APIのエラーが検出できるか", () => {
     };
     expect(isRESASError(data[403])).toStrictEqual(expectedError);
   });
+
+  test("404 Not Found", () => {
+    const expectedError = {
+      statusCode: 404,
+      errorMessage: "404. That's an error.",
+    };
+    expect(isRESASError(data[404])).toStrictEqual(expectedError);
+  });
 });
