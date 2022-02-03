@@ -20,10 +20,7 @@ const Home: NextPage = () => {
     },
     yAxis: { title: { text: "総人口" } },
     // グラフ
-    series: [
-      { type: "line", name: "graph1", data: [1, 2, 3] },
-      { type: "line", name: "graph2", data: [3, 2, 1] },
-    ],
+    series: [],
   });
 
   // チェックを切り替えたとき
@@ -34,15 +31,42 @@ const Home: NextPage = () => {
     if (checked) {
       _new.push(pref);
     }
-    // 親の配列を更新
+    // 選択一覧を更新
     setSelectedPrefs(_new);
+    // グラフを更新
+    updateChart(pref);
   }
 
   // グラフの更新
-  function updateChart() {}
+  async function updateChart(newPref: Prefecture) {
+    // すでにグラフに含まれていれば削除
+    const filtered = chartOptions.series?.filter(
+      (series) => series.name != newPref.prefName
+    );
 
-  // 総人口を取得する関数
-  function getPopulation(prefCode: number) {}
+    // seriesのサイズが変わっていなければ新規要素
+    if (chartOptions.series?.length == filtered?.length) {
+      const population = await getPopulation(newPref.prefCode);
+
+      if (population?.data) {
+        const _new: Highcharts.Options = {
+          ...chartOptions,
+          series: [
+            ...(chartOptions.series ?? []),
+            {
+              type: "line",
+              name: newPref.prefName,
+              data: population.data.map((d) => d.value),
+            },
+          ],
+        };
+        setChartOptions(_new);
+      }
+    } else {
+      // 新規要素ではないので、削除したものを登録
+      setChartOptions({ ...chartOptions, series: filtered });
+    }
+  }
 
   return (
     <>
