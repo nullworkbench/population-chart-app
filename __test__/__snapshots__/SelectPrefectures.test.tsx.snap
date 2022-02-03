@@ -2,44 +2,42 @@
 
 exports[`コンポーネントを描画 47都道府県のチェックボックスが描画される 1`] = `
 <DocumentFragment>
-  <div>
-    <div
-      class="SelectPrefectures__Wrapper-sc-qkgodw-0 byVAms"
+  <div
+    class="SelectPrefectures__Wrapper-sc-qkgodw-0 byVAms"
+  >
+    <label
+      class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
     >
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-      >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          北海道
-        </span>
-      </label>
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-      >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          青森県
-        </span>
-      </label>
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-      >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          岩手県
-        </span>
-      </label>
-    </div>
+      <input
+        class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+        type="checkbox"
+      />
+      <span>
+        北海道
+      </span>
+    </label>
+    <label
+      class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+    >
+      <input
+        class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+        type="checkbox"
+      />
+      <span>
+        青森県
+      </span>
+    </label>
+    <label
+      class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+    >
+      <input
+        class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+        type="checkbox"
+      />
+      <span>
+        岩手県
+      </span>
+    </label>
   </div>
 </DocumentFragment>
 `;
