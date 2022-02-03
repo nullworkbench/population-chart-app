@@ -2,15 +2,13 @@
 
 import styled from "styled-components";
 
-import { Prefecture } from "@/libs/ResasApi";
 import { usePrefectures } from "@/libs/ResasApi";
 
 import Checkbox from "@/components/ui/Checkbox";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 
 type Props = {
   // 親のuseStateを呼び出す
-  selectedPrefs: Prefecture[];
   handleCheckboxChange: Function;
 };
 
@@ -28,6 +26,22 @@ const regionNames = [
 const SelectPrefectures: React.FC<Props> = (prop) => {
   // 都道府県一覧を取得
   const { prefectures, isLoading, isError } = usePrefectures();
+
+  // デフォルトでチェックを入れておく都道府県のprefCode
+  const defaultCheckedPrefCode = 13;
+
+  // 都道府県の取得が終わったタイミングで、デフォルトでオンの都道府県をチェックする
+  useEffect(() => {
+    const prefs = prefectures();
+    if (prefs) {
+      prop.handleCheckboxChange(
+        true,
+        prefs.find((p) => p.prefCode == defaultCheckedPrefCode)
+      );
+    }
+    // propなども含めると無限ループに陥るためルールを無効化
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   if (isLoading) {
     return <p data-testid="loadingText">Loading...</p>;

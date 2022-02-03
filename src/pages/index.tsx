@@ -72,10 +72,7 @@ const Home: NextPage = () => {
   return (
     <>
       {/* 都道府県一覧 */}
-      <SelectPrefectures
-        selectedPrefs={selectedPrefs}
-        handleCheckboxChange={handleCheckboxChange}
-      />
+      <SelectPrefectures handleCheckboxChange={handleCheckboxChange} />
       {/* グラフ */}
       <Chart chartOptions={chartOptions} />
     </>
