@@ -37,4 +37,12 @@ describe("RESAS-APIのエラーが検出できるか", () => {
     };
     expect(isRESASError(data[404])).toStrictEqual(expectedError);
   });
+
+  test("429 Too Many Requests", () => {
+    const expectedError = {
+      statusCode: 429,
+      errorMessage: "Too Many Requests.",
+    };
+    expect(isRESASError(data[429])).toStrictEqual(expectedError);
+  });
 });
