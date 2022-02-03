@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import useSWR from "swr";
 
 // RESAS-API独自エラーを出す用の型
@@ -14,7 +14,7 @@ export type Prefecture = {
 };
 
 // 総人口の型
-type Population = {
+export type Population = {
   prefCode: number;
   data: { year: number; value: number }[];
 };
@@ -50,27 +50,29 @@ export function usePrefectures() {
   };
 }
 
-// 総人口情報を取得する
-export function usePopulation(prefCode: number) {
-  const apiURL = `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`;
-  const { data, error } = useSWR(apiURL, fetcher);
-
-  return {
-    population: (): Population | null => {
-      // undefinedの場合は取得中なので早期return
-      if (data == undefined) return null;
-      // messageがnullの場合は取得が成功している
-      if (data["message"] == null) {
-        return {
-          prefCode,
-          data: data["result"]["data"][0]["data"],
-        };
-      }
-      return null;
-    },
-    isLoading: !error && !data,
-    isError: error,
-  };
+// 指定されたprefCodeから総人口情報を取得する
+export async function getPopulation(
+  prefCode: number
+): Promise<Population | void> {
+  try {
+    console.log("get");
+    const res = await axios.get(
+      `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
+      { headers }
+    );
+    // Resas独自のエラーをチェック
+    const ResasError = isRESASError(res.data);
+    if (ResasError) {
+      console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
+      return;
+    }
+    // 成功
+    return { prefCode, data: res.data["result"]["data"][0]["data"] };
+  } catch (error) {
+    // エラー
+    console.log(`Error getting population: ${error}`);
+    return;
+  }
 }
 
 // 取得は成功しているが、RESAS-APIのエラーがあるか判定する
@@ -78,7 +80,6 @@ export function isRESASError(data: any): RESASError | void {
   const objKeys = Object.keys(data);
   if (objKeys.includes("statusCode")) {
     // statusCodeがあるときは何らかのエラーが発生している
-    console.log("Error getting data");
     return {
       statusCode: Number(data["statusCode"]),
       errorMessage: data["message"],
