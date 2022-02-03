@@ -1,6 +1,12 @@
 import axios from "axios";
 import useSWR from "swr";
 
+// RESAS-API独自エラーを出す用の型
+export type RESASError = {
+  statusCode: number;
+  errorMessage: string;
+};
+
 // 都道府県の型
 export type Prefecture = {
   prefCode: number;
