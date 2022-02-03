@@ -4,10 +4,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
 <DocumentFragment>
   <div>
     <div
-      class="sc-bdvvtL gatNFc"
+      class="SelectPrefectures__Wrapper-sc-qkgodw-0 byVAms"
     >
       <div
-        class="sc-gsDKAQ cFnCUf"
+        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
       >
         <input
           id="pref1"
@@ -20,7 +20,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </label>
       </div>
       <div
-        class="sc-gsDKAQ cFnCUf"
+        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
       >
         <input
           id="pref2"
@@ -33,7 +33,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </label>
       </div>
       <div
-        class="sc-gsDKAQ cFnCUf"
+        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
       >
         <input
           id="pref3"
