@@ -21,10 +21,11 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   if (isLoading) {
     return <p data-testid="loadingText">Loading...</p>;
   } else {
-    if (prefectures()) {
+    const prefs = prefectures();
+    if (prefs) {
       return (
         <Wrapper>
-          {prefectures()!.map((prefecture, prefIdx) => (
+          {prefs.map((prefecture, prefIdx) => (
             <Checkbox
               key={prefIdx}
               checked={false}
