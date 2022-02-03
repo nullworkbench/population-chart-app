@@ -68,7 +68,7 @@ export function usePopulation(prefCode: number) {
 }
 
 // 取得は成功しているが、RESAS-APIのエラーがあるか判定する
-function isRESASError(data: any): {
+export function isRESASError(data: any): {
   statusCode: number;
   errorMessage: string;
 } | void {
