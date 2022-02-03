@@ -74,10 +74,7 @@ export function usePopulation(prefCode: number) {
 }
 
 // 取得は成功しているが、RESAS-APIのエラーがあるか判定する
-export function isRESASError(data: any): {
-  statusCode: number;
-  errorMessage: string;
-} | void {
+export function isRESASError(data: any): RESASError | void {
   const objKeys = Object.keys(data);
   if (objKeys.includes("statusCode")) {
     // statusCodeがあるときは何らかのエラーが発生している
