@@ -39,25 +39,28 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
           {/* 地方ごとに分類して都道府県を表示 */}
           {regionNames.map((region, rIdx) => {
             return (
-              <div key={rIdx}>
+              <RegionWrapper key={rIdx}>
                 <p>{region.name}</p>
-                {prefs
-                  .filter(
-                    (p) =>
-                      p.prefCode >= region.prefCodeRange.min &&
-                      p.prefCode <= region.prefCodeRange.max
-                  )
-                  .map((pref, prefIdx) => (
-                    <Checkbox
-                      key={prefIdx}
-                      checked={false}
-                      label={pref.prefName}
-                      handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        prop.handleCheckboxChange(e.target.checked, pref)
-                      }
-                    />
-                  ))}
-              </div>
+                <div className="prefs">
+                  {prefs
+                    .filter(
+                      (p) =>
+                        p.prefCode >= region.prefCodeRange.min &&
+                        p.prefCode <= region.prefCodeRange.max
+                    )
+                    .map((pref, prefIdx) => (
+                      <CheckboxWrapper key={prefIdx}>
+                        <Checkbox
+                          checked={false}
+                          label={pref.prefName}
+                          handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                            prop.handleCheckboxChange(e.target.checked, pref)
+                          }
+                        />
+                      </CheckboxWrapper>
+                    ))}
+                </div>
+              </RegionWrapper>
             );
           })}
         </div>
@@ -68,9 +71,20 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   }
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+const RegionWrapper = styled.div`
+  margin-bottom: 0.5rem;
+  & > p {
+    margin-bottom: 0.2rem;
+  }
+  & > .prefs {
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
+
+const CheckboxWrapper = styled.div`
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
 `;
 
 export default SelectPrefectures;
