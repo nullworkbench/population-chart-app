@@ -19,19 +19,29 @@
 
 ## 実行方法
 
-1. リポジトリのクローン（環境変数は別途ご用意ください）
+1. リポジトリのクローン
 ```
 git clone https://github.com/nullworkbench/population-chart-app.git
 ```
+
 2. パッケージのインストール
 ```
 npm install
 ```
-3. 開発サーバー起動
+
+3. 環境変数
+
+`.env.local`および`.env.test.local`名でプロジェクトルートへ下記情報を記述してください
+```
+NEXT_PUBLIC_RESAS_API_KEY=RESAS-APIのAPIキーを入力
+```
+
+5. 開発サーバー起動
 ```
 npm run dev
 ```
-4. テスト実行
+
+5. テスト実行
 ```
 npm run test
 ```
