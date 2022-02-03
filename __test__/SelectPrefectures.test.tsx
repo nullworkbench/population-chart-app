@@ -63,7 +63,7 @@ describe("コンポーネントを描画", () => {
     // SWRのキャッシュを無効化して描画
     render(
       <SWRConfig value={{ provider: () => new Map() }}>
-        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+        <SelectPrefectures handleCheckboxChange={() => {}} />
       </SWRConfig>
     );
     expect(screen.getByTestId("loadingText"));
@@ -74,7 +74,7 @@ describe("コンポーネントを描画", () => {
     // SWRのキャッシュを無効化して描画
     const { asFragment } = render(
       <SWRConfig value={{ provider: () => new Map() }}>
-        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+        <SelectPrefectures handleCheckboxChange={() => {}} />
       </SWRConfig>
     );
 
@@ -103,7 +103,7 @@ describe("コンポーネントを描画", () => {
     // SWRのキャッシュを無効化して描画
     render(
       <SWRConfig value={{ provider: () => new Map() }}>
-        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+        <SelectPrefectures handleCheckboxChange={() => {}} />
       </SWRConfig>
     );
     // この要素が消えるまでテストを終了しないで待つ
