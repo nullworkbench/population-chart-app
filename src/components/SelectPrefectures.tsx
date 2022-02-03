@@ -8,7 +8,6 @@ import Checkbox from "@/components/ui/Checkbox";
 import { ChangeEvent, useEffect } from "react";
 
 type Props = {
-  // 親のuseStateを呼び出す
   handleCheckboxChange: Function;
 };
 
