@@ -8,7 +8,6 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
     >
       <div
         class="sc-gsDKAQ cFnCUf"
-        style="background: none;"
       >
         <input
           id="pref1"
@@ -22,7 +21,6 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
       </div>
       <div
         class="sc-gsDKAQ cFnCUf"
-        style="background: none;"
       >
         <input
           id="pref2"
@@ -36,7 +34,6 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
       </div>
       <div
         class="sc-gsDKAQ cFnCUf"
-        style="background: none;"
       >
         <input
           id="pref3"

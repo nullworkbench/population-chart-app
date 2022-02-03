@@ -1,6 +1,12 @@
 import axios, { AxiosError } from "axios";
 import useSWR from "swr";
 
+// RESAS-API独自エラーを出す用の型
+export type RESASError = {
+  statusCode: number;
+  errorMessage: string;
+};
+
 // 都道府県の型
 export type Prefecture = {
   prefCode: number;
@@ -104,4 +110,30 @@ export async function getPopulation(
     // エラー
     return;
   }
+}
+
+// 取得は成功しているが、RESAS-APIのエラーがあるか判定する
+export function isRESASError(data: any): RESASError | void {
+  const objKeys = Object.keys(data);
+  if (objKeys.includes("statusCode")) {
+    // statusCodeがあるときは何らかのエラーが発生している
+    console.log("Error getting data");
+    return {
+      statusCode: Number(data["statusCode"]),
+      errorMessage: data["message"],
+    };
+  } else if (objKeys.length == 1 && objKeys[0] == "message") {
+    // 429 Too Many Requests
+    return { statusCode: 429, errorMessage: "Too Many Requests." };
+  } else if (
+    objKeys.length > 1 &&
+    objKeys.includes("message") &&
+    data[objKeys.indexOf("message")] == null
+  ) {
+    // 正しく取得できている
+    console.log("getting data successfully");
+    return;
+  }
+  // messageなしの何らかのエラー
+  return { statusCode: 400, errorMessage: "Some Error Occured." };
 }

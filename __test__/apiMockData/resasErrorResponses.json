@@ -1,0 +1,41 @@
+{
+  "success": {
+    "message": null,
+    "result": {
+      "boundaryYear": 2015,
+      "data": [
+        {
+          "label": "総人口",
+          "data": [
+            {
+              "year": 1960,
+              "value": 5039206
+            },
+            {
+              "year": 1965,
+              "value": 5171800
+            },
+            {
+              "year": 1970,
+              "value": 5184287
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "400": "400",
+  "403": {
+    "statusCode": "403",
+    "message": "Forbidden.",
+    "description": ""
+  },
+  "404": {
+    "statusCode": "404",
+    "message": "404. That's an error.",
+    "description": "The requested URL /404 was not found on this server."
+  },
+  "429": {
+    "message": null
+  }
+}
