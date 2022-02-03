@@ -5,7 +5,8 @@ import { rest } from "msw";
 import { setupServer } from "msw/node";
 
 // テスト対象
-import prefecutres from "@/pages/api/prefectures";
+import prefecutresApiRoute from "@/pages/api/prefectures";
+import prefectures from "../apiMockData/prefectures.json";
 
 // APIのモックサーバーを立てる
 const apiURL = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
@@ -14,26 +15,7 @@ const handlers = [
     // テスト中の以下のリクエストはこのモックサーバーに送られる
     apiURL,
     (req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          message: null,
-          result: [
-            {
-              prefCode: 1,
-              prefName: "北海道",
-            },
-            {
-              prefCode: 2,
-              prefName: "青森県",
-            },
-            {
-              prefCode: 3,
-              prefName: "岩手県",
-            },
-          ],
-        })
-      );
+      return res(ctx.status(200), ctx.json(prefectures));
     }
   ),
 ];
