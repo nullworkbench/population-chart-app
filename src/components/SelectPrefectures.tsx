@@ -35,18 +35,32 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
     const prefs = prefectures();
     if (prefs) {
       return (
-        <Wrapper>
-          {prefs.map((pref, prefIdx) => (
-            <Checkbox
-              key={prefIdx}
-              checked={false}
-              label={pref.prefName}
-              handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                prop.handleCheckboxChange(e.target.checked, pref)
-              }
-            />
-          ))}
-        </Wrapper>
+        <div>
+          {/* 地方ごとに分類して都道府県を表示 */}
+          {regionNames.map((region, rIdx) => {
+            return (
+              <div key={rIdx}>
+                <p>{region.name}</p>
+                {prefs
+                  .filter(
+                    (p) =>
+                      p.prefCode >= region.prefCodeRange.min &&
+                      p.prefCode <= region.prefCodeRange.max
+                  )
+                  .map((pref, prefIdx) => (
+                    <Checkbox
+                      key={prefIdx}
+                      checked={false}
+                      label={pref.prefName}
+                      handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        prop.handleCheckboxChange(e.target.checked, pref)
+                      }
+                    />
+                  ))}
+              </div>
+            );
+          })}
+        </div>
       );
     } else {
       return <p data-testid="errorMessage">An Error Occured. Please Reload.</p>;
