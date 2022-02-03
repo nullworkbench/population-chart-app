@@ -65,7 +65,12 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                     .map((pref, prefIdx) => (
                       <CheckboxWrapper key={prefIdx}>
                         <Checkbox
-                          checked={false}
+                          // デフォルトでチェックする都道府県の場合はtrue
+                          checked={
+                            pref.prefCode == defaultCheckedPrefCode
+                              ? true
+                              : false
+                          }
                           label={pref.prefName}
                           handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
                             prop.handleCheckboxChange(e.target.checked, pref)
