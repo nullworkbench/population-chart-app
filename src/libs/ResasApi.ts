@@ -80,9 +80,6 @@ export function isRESASError(data: any): {
       statusCode: Number(data["statusCode"]),
       errorMessage: data["message"],
     };
-  } else if (objKeys.length == 0) {
-    // messageなしの何らかのエラー
-    return { statusCode: Number(data), errorMessage: `${data} Error.` };
   } else if (objKeys.length == 1 && objKeys[0] == "message") {
     // 429 Too Many Requests
     return { statusCode: 429, errorMessage: "Too Many Requests." };
@@ -95,5 +92,6 @@ export function isRESASError(data: any): {
     console.log("getting data successfully");
     return;
   }
+  // messageなしの何らかのエラー
   return { statusCode: 400, errorMessage: "Some Error Occured." };
 }
