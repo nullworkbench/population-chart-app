@@ -6,6 +6,7 @@ import { Prefecture } from "@/libs/ResasApi";
 import { usePrefectures } from "@/libs/ResasApi";
 
 import Checkbox from "@/components/ui/Checkbox";
+import { ChangeEvent } from "react";
 
 type Props = {
   // 親のuseStateを呼び出す
@@ -19,27 +20,20 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 
   return (
     <div>
-      <div>
-        <Checkbox checked={true} label="鹿児島県" />
-      </div>
       {isLoading ? (
         <p data-testid="loadingText">Loading...</p>
       ) : (
         <Wrapper>
           {prefectures() ? (
             prefectures()!.map((prefecture, prefIdx) => (
-              <CheckBoxWrap key={prefIdx}>
-                <input
-                  type="checkbox"
-                  id={"pref" + prefecture.prefCode}
-                  onChange={(e) =>
-                    prop.handleCheckboxChange(e.target.checked, prefecture)
-                  }
-                />
-                <label htmlFor={"pref" + prefecture.prefCode}>
-                  {prefecture.prefName}
-                </label>
-              </CheckBoxWrap>
+              <Checkbox
+                key={prefIdx}
+                checked={false}
+                label={prefecture.prefName}
+                handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  prop.handleCheckboxChange(e.target.checked, prefecture)
+                }
+              />
             ))
           ) : (
             <p data-testid="errorMessage">An Error Occured. Please Reload.</p>
@@ -53,11 +47,6 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-`;
-
-const CheckBoxWrap = styled.div`
-  width: 6rem;
-  padding: 1rem 0.5rem;
 `;
 
 export default SelectPrefectures;

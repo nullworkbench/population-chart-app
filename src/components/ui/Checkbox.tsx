@@ -11,7 +11,7 @@ const Checkbox: React.FC<Props> = (prop) => {
     <Label>
       <Input
         defaultChecked={prop.checked}
-        onChange={(e) => prop.handleOnChange(e.target.value)}
+        onChange={(e) => prop.handleOnChange(e)}
       />
       <span>{prop.label}</span>
     </Label>
