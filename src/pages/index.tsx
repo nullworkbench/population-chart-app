@@ -51,6 +51,7 @@ const Home: NextPage = () => {
       if (population?.data) {
         const _new: Highcharts.Options = {
           ...chartOptions,
+          xAxis: { categories: population.data.map((d) => String(d.year)) },
           series: [
             ...(chartOptions.series ?? []),
             {
