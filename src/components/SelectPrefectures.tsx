@@ -18,30 +18,28 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   // 都道府県一覧を取得
   const { prefectures, isLoading, isError } = usePrefectures();
 
-  return (
-    <div>
-      {isLoading ? (
-        <p data-testid="loadingText">Loading...</p>
-      ) : (
+  if (isLoading) {
+    return <p data-testid="loadingText">Loading...</p>;
+  } else {
+    if (prefectures()) {
+      return (
         <Wrapper>
-          {prefectures() ? (
-            prefectures()!.map((prefecture, prefIdx) => (
-              <Checkbox
-                key={prefIdx}
-                checked={false}
-                label={prefecture.prefName}
-                handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  prop.handleCheckboxChange(e.target.checked, prefecture)
-                }
-              />
-            ))
-          ) : (
-            <p data-testid="errorMessage">An Error Occured. Please Reload.</p>
-          )}
+          {prefectures()!.map((prefecture, prefIdx) => (
+            <Checkbox
+              key={prefIdx}
+              checked={false}
+              label={prefecture.prefName}
+              handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                prop.handleCheckboxChange(e.target.checked, prefecture)
+              }
+            />
+          ))}
         </Wrapper>
-      )}
-    </div>
-  );
+      );
+    } else {
+      return <p data-testid="errorMessage">An Error Occured. Please Reload.</p>;
+    }
+  }
 };
 
 const Wrapper = styled.div`
