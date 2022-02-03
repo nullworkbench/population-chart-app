@@ -25,13 +25,13 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
     if (prefs) {
       return (
         <Wrapper>
-          {prefs.map((prefecture, prefIdx) => (
+          {prefs.map((pref, prefIdx) => (
             <Checkbox
               key={prefIdx}
               checked={false}
-              label={prefecture.prefName}
+              label={pref.prefName}
               handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                prop.handleCheckboxChange(e.target.checked, prefecture)
+                prop.handleCheckboxChange(e.target.checked, pref)
               }
             />
           ))}
