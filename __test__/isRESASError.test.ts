@@ -21,4 +21,12 @@ describe("RESAS-APIのエラーが検出できるか", () => {
     };
     expect(isRESASError(data[400])).toStrictEqual(expectedError);
   });
+
+  test("403 Forbidden", () => {
+    const expectedError = {
+      statusCode: 403,
+      errorMessage: "Forbidden.",
+    };
+    expect(isRESASError(data[403])).toStrictEqual(expectedError);
+  });
 });
