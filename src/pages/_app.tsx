@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import styled from "styled-components";
-import "@/styles/globals.scss";
+import "modern-css-reset/dist/reset.min.css"; // Reset CSS
 
 import Title from "@/components/ui/Title";
 
