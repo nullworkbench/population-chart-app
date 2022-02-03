@@ -11,6 +11,9 @@ import { getPopulation } from "@/libs/ResasApi";
 import population from "./apiMockData/population.json";
 const prefCode = 1;
 
+// ResasApiのエラーレスポンス
+import resasResponses from "./apiMockData/resasErrorResponses.json";
+
 // APIのモックサーバーを立てる
 const apiURL =
   "https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear";
@@ -49,5 +52,31 @@ describe("getPopulationのテスト", () => {
     };
 
     expect(res).toStrictEqual(expectedResponse);
+  });
+
+  test("API通信にエラーがあった場合にvoidを返すことを確認", async () => {
+    // エラーを起こすためにモックサーバーを上書き
+    server.use(
+      rest.get(apiURL, (req, res, ctx) => {
+        return res(ctx.status(400));
+      })
+    );
+    // getPopulation実行
+    const res = await getPopulation(prefCode);
+
+    expect(res).toBeUndefined();
+  });
+
+  test("ResasApi独自のエラーがあった場合にvoidを返すことを確認", async () => {
+    // エラーを起こすためにモックサーバーを上書き
+    server.use(
+      rest.get(apiURL, (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(resasResponses["403"]));
+      })
+    );
+    // getPopulation実行
+    const res = await getPopulation(prefCode);
+
+    expect(res).toBeUndefined();
   });
 });
