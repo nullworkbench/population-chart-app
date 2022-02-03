@@ -36,14 +36,17 @@ export function usePrefectures() {
 
   return {
     // データは整形して返す
-    prefectures: (): Prefecture[] | null => {
+    prefectures: (): Prefecture[] | void => {
       // undefinedの場合は取得中なので早期return
-      if (data == undefined) return null;
-      // messageがnullの場合は取得が成功している
-      if (data["message"] == null) {
-        return data["result"] as Prefecture[];
+      if (data == undefined) return;
+      // Resas独自のエラーをチェック
+      const ResasError = isRESASError(data);
+      if (ResasError) {
+        console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
+        return;
       }
-      return null;
+      // 成功
+      return data["result"] as Prefecture[];
     },
     isLoading: !error && !data,
     isError: error,
