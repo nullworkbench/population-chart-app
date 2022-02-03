@@ -34,18 +34,18 @@ const Home: NextPage = () => {
     // 選択一覧を更新
     setSelectedPrefs(_new);
     // グラフを更新
-    updateChart(pref);
+    updateChart(checked, pref);
   }
 
   // グラフの更新
-  async function updateChart(newPref: Prefecture) {
+  async function updateChart(checked: boolean, newPref: Prefecture) {
     // すでにグラフに含まれていれば削除
     const filtered = chartOptions.series?.filter(
       (series) => series.name != newPref.prefName
     );
 
-    // seriesのサイズが変わっていなければ新規要素
-    if (chartOptions.series?.length == filtered?.length) {
+    // 新規要素の場合は人口情報を取得
+    if (checked) {
       const population = await getPopulation(newPref.prefCode);
 
       if (population?.data) {
