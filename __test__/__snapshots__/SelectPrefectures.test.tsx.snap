@@ -6,45 +6,39 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
     <div
       class="SelectPrefectures__Wrapper-sc-qkgodw-0 byVAms"
     >
-      <div
-        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
+      <label
+        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
       >
         <input
-          id="pref1"
+          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
           type="checkbox"
         />
-        <label
-          for="pref1"
-        >
+        <span>
           北海道
-        </label>
-      </div>
-      <div
-        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
+        </span>
+      </label>
+      <label
+        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
       >
         <input
-          id="pref2"
+          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
           type="checkbox"
         />
-        <label
-          for="pref2"
-        >
+        <span>
           青森県
-        </label>
-      </div>
-      <div
-        class="SelectPrefectures__CheckBoxWrap-sc-qkgodw-1 kPXSBf"
+        </span>
+      </label>
+      <label
+        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
       >
         <input
-          id="pref3"
+          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
           type="checkbox"
         />
-        <label
-          for="pref3"
-        >
+        <span>
           岩手県
-        </label>
-      </div>
+        </span>
+      </label>
     </div>
   </div>
 </DocumentFragment>
