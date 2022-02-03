@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { Prefecture } from "@/libs/ResasApi";
 import { usePrefectures } from "@/libs/ResasApi";
 
+import Checkbox from "@/components/ui/Checkbox";
+
 type Props = {
   // 親のuseStateを呼び出す
   selectedPrefs: Prefecture[];
@@ -17,6 +19,9 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 
   return (
     <div>
+      <div>
+        <Checkbox />
+      </div>
       {isLoading ? (
         <p data-testid="loadingText">Loading...</p>
       ) : (
