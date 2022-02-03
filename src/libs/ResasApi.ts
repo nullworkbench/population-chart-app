@@ -66,3 +66,34 @@ export function usePopulation(prefCode: number) {
     isError: error,
   };
 }
+
+// 取得は成功しているが、RESAS-APIのエラーがあるか判定する
+function isRESASError(data: any): {
+  statusCode: number;
+  errorMessage: string;
+} | void {
+  const objKeys = Object.keys(data);
+  if (objKeys.includes("statusCode")) {
+    // statusCodeがあるときは何らかのエラーが発生している
+    console.log("Error getting data");
+    return {
+      statusCode: Number(data["statusCode"]),
+      errorMessage: data["message"],
+    };
+  } else if (objKeys.length == 0) {
+    // messageなしの何らかのエラー
+    return { statusCode: Number(data), errorMessage: `${data} Error.` };
+  } else if (objKeys.length == 1 && objKeys[0] == "message") {
+    // 429 Too Many Requests
+    return { statusCode: 429, errorMessage: "Too Many Requests." };
+  } else if (
+    objKeys.length > 1 &&
+    objKeys.includes("message") &&
+    data[objKeys.indexOf("message")] == null
+  ) {
+    // 正しく取得できている
+    console.log("getting data successfully");
+    return;
+  }
+  return { statusCode: 400, errorMessage: "Some Error Occured." };
+}
