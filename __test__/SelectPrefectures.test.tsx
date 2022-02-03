@@ -12,6 +12,7 @@ import { setupServer } from "msw/node";
 // テスト対象
 import SelectPrefectures from "@/components/SelectPrefectures";
 import { SWRConfig } from "swr";
+import { Prefecture } from "@/libs/ResasApi";
 
 // APIのモックサーバーを立てる
 const apiURL = "https://opendata.resas-portal.go.jp/api/v1/prefectures";
@@ -74,7 +75,7 @@ describe("コンポーネントを描画", () => {
     // SWRのキャッシュを無効化して描画
     const { asFragment } = render(
       <SWRConfig value={{ provider: () => new Map() }}>
-        <SelectPrefectures selectedPrefs={[]} setSelectedPrefs={() => {}} />
+        <SelectPrefectures selectedPrefs={[]} handleCheckboxChange={() => {}} />
       </SWRConfig>
     );
 
