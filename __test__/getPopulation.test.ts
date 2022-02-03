@@ -38,5 +38,16 @@ afterAll(() => {
 
 // テスト内容
 describe("getPopulationのテスト", () => {
-  test("APIから正常に取得できるか確認", async () => {});
+  test("APIから正常に取得できるか確認", async () => {
+    // getPopulation実行
+    const res = await getPopulation(prefCode);
+
+    // APIのレスポンスから総人口を切り出したもの
+    const expectedResponse = {
+      prefCode: prefCode,
+      data: population.result.data[0].data,
+    };
+
+    expect(res).toStrictEqual(expectedResponse);
+  });
 });
