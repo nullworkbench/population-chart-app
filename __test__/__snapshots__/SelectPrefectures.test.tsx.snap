@@ -4,41 +4,120 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
 <DocumentFragment>
   <div>
     <div
-      class="SelectPrefectures__Wrapper-sc-qkgodw-0 byVAms"
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
     >
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+      <p>
+        北海道・東北
+      </p>
+      <div
+        class="prefs"
       >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          北海道
-        </span>
-      </label>
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-      >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          青森県
-        </span>
-      </label>
-      <label
-        class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-      >
-        <input
-          class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-          type="checkbox"
-        />
-        <span>
-          岩手県
-        </span>
-      </label>
+        <div
+          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
+        >
+          <label
+            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+          >
+            <input
+              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+              type="checkbox"
+            />
+            <span>
+              北海道
+            </span>
+          </label>
+        </div>
+        <div
+          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
+        >
+          <label
+            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+          >
+            <input
+              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+              type="checkbox"
+            />
+            <span>
+              青森県
+            </span>
+          </label>
+        </div>
+        <div
+          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
+        >
+          <label
+            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+          >
+            <input
+              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+              type="checkbox"
+            />
+            <span>
+              岩手県
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        関東
+      </p>
+      <div
+        class="prefs"
+      />
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        北陸・信越
+      </p>
+      <div
+        class="prefs"
+      />
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        東海
+      </p>
+      <div
+        class="prefs"
+      />
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        近畿
+      </p>
+      <div
+        class="prefs"
+      />
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        中国・四国
+      </p>
+      <div
+        class="prefs"
+      />
+    </div>
+    <div
+      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+    >
+      <p>
+        九州・沖縄
+      </p>
+      <div
+        class="prefs"
+      />
     </div>
   </div>
 </DocumentFragment>
