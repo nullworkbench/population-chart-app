@@ -14,8 +14,7 @@ afterEach(() => {
 
 // テスト内容
 describe("RESAS-APIのエラーが検出できるか", () => {
-  // テスト１
-  test("400 Bad Request", async () => {
+  test("400 Bad Request", () => {
     const expectedError = {
       statusCode: 400,
       errorMessage: "Some Error Occured.",
