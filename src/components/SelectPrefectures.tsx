@@ -14,6 +14,17 @@ type Props = {
   handleCheckboxChange: Function;
 };
 
+// 地方名
+const regionNames = [
+  { name: "北海道・東北", prefCodeRange: { min: 1, max: 7 } },
+  { name: "関東", prefCodeRange: { min: 8, max: 14 } },
+  { name: "北陸・信越", prefCodeRange: { min: 15, max: 20 } },
+  { name: "東海", prefCodeRange: { min: 21, max: 24 } },
+  { name: "近畿", prefCodeRange: { min: 25, max: 30 } },
+  { name: "中国・四国", prefCodeRange: { min: 31, max: 39 } },
+  { name: "九州・沖縄", prefCodeRange: { min: 40, max: 47 } },
+];
+
 const SelectPrefectures: React.FC<Props> = (prop) => {
   // 都道府県一覧を取得
   const { prefectures, isLoading, isError } = usePrefectures();
