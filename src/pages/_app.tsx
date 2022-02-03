@@ -14,9 +14,14 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 const Wrapper = styled.div`
+  // size
   width: 90vw;
   max-width: 1000px;
+  // spaces
   margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 8rem;
+  // font
   font-family: -apple-system, BlinkMacSystemFont, "ヒラギノ角ゴシック",
     "Hiragino Sans", YuGothic, "Yu Gothic", "Source Sans Pro", "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif;
