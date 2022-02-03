@@ -17,6 +17,9 @@ const Wrapper = styled.div`
   width: 90vw;
   max-width: 1000px;
   margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "ヒラギノ角ゴシック",
+    "Hiragino Sans", YuGothic, "Yu Gothic", "Source Sans Pro", "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
 `;
 
 export default MyApp;
