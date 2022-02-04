@@ -31,7 +31,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 
   // 都道府県の取得が終わったタイミングで、デフォルトでオンの都道府県をチェックする
   useEffect(() => {
-    if (!isLoading) {
+    if (!isLoading && !isError) {
       prop.handleCheckboxChange(
         true,
         prefectures.find((p) => p.prefCode == defaultCheckedPrefCode)
