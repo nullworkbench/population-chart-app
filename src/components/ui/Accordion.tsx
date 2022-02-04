@@ -27,7 +27,7 @@ const Accordion: React.FC = () => {
     <AccordionWrapper>
       <AccordionButton onClick={() => toggleIsOpen()}>
         <div>Accordion Button</div>
-        <AccordionIcon />
+        <AccordionIcon className={isOpen ? "isOpen" : ""} />
       </AccordionButton>
       <AccordionContentWrapper ref={contentWrapperRef}>
         <AccordionContent>
@@ -43,6 +43,9 @@ const Accordion: React.FC = () => {
 };
 
 export default Accordion;
+
+// CSS Transitionの時間
+const transitionDuration = "0.4s";
 
 const AccordionWrapper = styled.div`
   --borderStyle: 1px solid #e5e5e5;
@@ -61,7 +64,14 @@ const AccordionIcon = styled.div`
   --w: 0.5rem;
   width: var(--w);
   position: relative;
-  margin-right: calc(var(--w) / 2);
+  transform-origin: center;
+  transform: translateX(-100%);
+  transition: transform ${transitionDuration};
+
+  &.isOpen {
+    // margin-right: 0;
+    transform: translateX(-60%) rotate(180deg);
+  }
 
   &::before,
   &::after {
@@ -88,7 +98,7 @@ const AccordionIcon = styled.div`
 const AccordionContentWrapper = styled.div`
   height: 0;
   overflow: hidden;
-  transition: height 0.4s;
+  transition: height ${transitionDuration};
 `;
 const AccordionContent = styled.div`
   padding-top: 1rem;
