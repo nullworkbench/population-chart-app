@@ -15,12 +15,12 @@ export default async function handler(
 ) {
   // ResasApiから都道府県一覧を取得して返す
   await resasApi.get("/prefectures").then((axiosRes) => {
+    // ResasApi独自のエラーをチェック
     const resasError = isRESASError(axiosRes.data);
     if (resasError) {
+      // エラーがあればステータスコードとエラーメッセージを書き込む
       console.log(`${resasError.statusCode}: ${resasError.errorMessage}`);
       res.writeHead(resasError.statusCode, resasError.errorMessage);
-      const r = res.statusMessage;
-      console.log(r);
     } else {
       res.status(200).json(axiosRes.data["result"] as Prefecture[]);
     }
