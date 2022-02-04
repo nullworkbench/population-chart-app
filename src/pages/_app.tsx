@@ -11,6 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         {/* Title */}
         <title>Population Chart</title>
+        {/* description */}
+        <meta
+          name="description"
+          content="日本の総人口推移を都道府県別にグラフ表示するアプリです！"
+        />
         {/* favicon */}
         <link rel="icon" type="image/svg" href="/favicon.svg" />
       </Head>
