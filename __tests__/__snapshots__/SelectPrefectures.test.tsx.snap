@@ -7,10 +7,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
       class="Accordion__AccordionWrapper-sc-nw0nsq-0 jOgKWk"
     >
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             北海道・東北
@@ -23,7 +23,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -66,10 +66,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             関東
@@ -83,7 +83,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           style="height: 0px;"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -92,10 +92,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             北陸・信越
@@ -108,7 +108,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -117,10 +117,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             東海
@@ -133,7 +133,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -142,10 +142,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             近畿
@@ -158,7 +158,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -167,10 +167,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             中国・四国
@@ -183,7 +183,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
@@ -192,10 +192,10 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
         </div>
       </div>
       <div
-        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 AccordionItem"
       >
         <div
-          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 jPmpSX"
         >
           <div>
             九州・沖縄
@@ -208,7 +208,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
           class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
           <div
-            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 hnblsx"
           >
             <div
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"

@@ -63,14 +63,19 @@ export default Accordion;
 // CSS Transitionの時間
 const transitionDuration = "0.4s";
 
-const Wrapper = styled.div`
-  padding: 0.5rem 0.8rem;
-`;
+const Wrapper = styled.div``;
 
 const AccordionButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  transition: background 0.4s;
+
+  &:hover {
+    background: #eee;
+  }
 `;
 
 const AccordionIcon = styled.div`
@@ -114,5 +119,7 @@ const AccordionContentWrapper = styled.div`
   transition: height ${transitionDuration};
 `;
 const AccordionContent = styled.div`
-  padding-top: 1rem;
+  padding: 0.8rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.6rem;
 `;
