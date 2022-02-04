@@ -37,12 +37,15 @@ afterAll(() => {
 
 // テスト内容
 describe("/api/population/[prefCode]でResasApiを叩いて人口情報を返す内部API", () => {
+  const prefCode = 1;
+
   test("正しく総人口が取得できることを確認", async () => {
-    const prefCode = 1;
+    // テストに使用するリクエスト / レスポンス
     const mockReq = httpMocks.createRequest<ExNextApiRequest>({
       query: { prefCode },
     });
     const mockRes = httpMocks.createResponse<NextApiResponse>();
+
     await populationApiRoute(mockReq, mockRes);
 
     // 期待されるレスポンス
@@ -52,5 +55,24 @@ describe("/api/population/[prefCode]でResasApiを叩いて人口情報を返す
     };
 
     expect(mockRes._getJSONData()).toStrictEqual(expectedResponse);
+  });
+
+  test("RESAS APIのエラーがある場合はエラーを返すことを確認", async () => {
+    const error = resasResponses["403"];
+    // エラーになるようにモックサーバーを上書き
+    server.use(
+      rest.get(apiURL, (req, res, ctx) => res(ctx.status(200), ctx.json(error)))
+    );
+
+    // テストに使用するリクエスト / レスポンス
+    const mockReq = httpMocks.createRequest<ExNextApiRequest>({
+      query: { prefCode },
+    });
+    const mockRes = httpMocks.createResponse<NextApiResponse>();
+
+    await populationApiRoute(mockReq, mockRes);
+
+    expect(mockRes._getStatusCode()).toStrictEqual(Number(error.statusCode));
+    expect(mockRes._getStatusMessage()).toStrictEqual(error.message);
   });
 });
