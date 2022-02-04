@@ -11,6 +11,7 @@ const defaultChartOptions: Highcharts.Options = {
   //グラフタイトル
   title: { text: "都道府県別の総人口推移", margin: 30 },
   subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
+  chart: { marginLeft: 80 },
   // X軸のラベル
   xAxis: {
     title: { text: "年度", align: "high", offset: 0, x: 10, y: 25 },

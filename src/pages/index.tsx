@@ -11,10 +11,7 @@ const Home: NextPage = () => {
   const [selectedPrefs, setSelectedPrefs] = useState<Prefecture[]>([]);
 
   // グラフの設定
-  const [chartOptions, setChartOptions] = useState<Highcharts.Options>({
-    xAxis: { categories: [] }, // X軸
-    series: [], // グラフ
-  });
+  const [chartOptions, setChartOptions] = useState<Highcharts.Options>({});
 
   // チェックを切り替えたとき
   function handleCheckboxChange(checked: boolean, pref: Prefecture) {
