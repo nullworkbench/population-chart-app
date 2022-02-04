@@ -55,4 +55,16 @@ describe("/api/prefecturesでResasApiを叩いて都道府県一覧を返す内�
     expect(mockRes._getStatusCode()).toStrictEqual(Number(error.statusCode));
     expect(mockRes._getStatusMessage()).toStrictEqual(error.message);
   });
+
+  test("API通信時に何らかの障害発生した場合にエラーを返していることを確認", async () => {
+    // エラーになるようにモックサーバーを上書き
+    server.use(rest.get(apiURL, (req, res, ctx) => res(ctx.status(500))));
+
+    const mockReq = httpMocks.createRequest<NextApiRequest>();
+    const mockRes = httpMocks.createResponse<NextApiResponse>();
+    await prefecutresApiRoute(mockReq, mockRes);
+
+    expect(mockRes._getStatusCode()).toStrictEqual(500);
+    expect(mockRes._getStatusMessage()).not.toBeNull();
+  });
 });
