@@ -31,23 +31,13 @@ const fetcher = (url: string) =>
 
 // 都道府県情報を取得する
 export function usePrefectures() {
-  const apiURL = endPoint + "/prefectures";
-  const { data, error } = useSWR(apiURL, fetcher);
+  const apiURL = "/api/prefectures";
+  const fetcher2 = (url: string) => axios.get(url).then((res) => res.data);
+  const { data, error } = useSWR(apiURL, fetcher2);
 
   return {
     // データは整形して返す
-    prefectures: (): Prefecture[] | void => {
-      // undefinedの場合は取得中なので早期return
-      if (data == undefined) return;
-      // Resas独自のエラーをチェック
-      const ResasError = isRESASError(data);
-      if (ResasError) {
-        console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
-        return;
-      }
-      // 成功
-      return data["result"] as Prefecture[];
-    },
+    prefectures: data as Prefecture[],
     isLoading: !error && !data,
     isError: error,
   };
