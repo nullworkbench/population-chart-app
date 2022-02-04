@@ -1,13 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { Prefecture, isRESASError } from "@/libs/ResasApi";
-
-// resasApiを使うための基本設定を行なったaxiosインスタンス
-const resasApi = axios.create({
-  baseURL: "https://opendata.resas-portal.go.jp/api/v1",
-  headers: { "x-api-key": process.env.NEXT_PUBLIC_RESAS_API_KEY! },
-});
+import { resasApi, Prefecture, isRESASError } from "@/libs/ResasApi";
 
 export default async function handler(
   req: NextApiRequest,

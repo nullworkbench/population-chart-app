@@ -19,6 +19,12 @@ export type Population = {
   data: { year: number; value: number }[];
 };
 
+// resasApiを使うための基本設定を行なったaxiosインスタンス
+export const resasApi = axios.create({
+  baseURL: "https://opendata.resas-portal.go.jp/api/v1",
+  headers: { "x-api-key": process.env.NEXT_PUBLIC_RESAS_API_KEY! },
+});
+
 // RESAS APIのエンドポイント
 const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
 
