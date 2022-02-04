@@ -1,12 +1,21 @@
 import styled from "styled-components";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
   title: string;
+  openDefault?: boolean;
 };
 
 const Accordion: React.FC<Props> = (prop) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (prop.openDefault == true) {
+      toggleIsOpen();
+    }
+    // mounted時に実行したいのでルールを無効化
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const contentWrapperRef = useRef<HTMLDivElement>(null);
 
