@@ -53,7 +53,11 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
       {/* 地方ごとに分類して都道府県を表示 */}
       {regionNames.map((region, rIdx) => {
         return (
-          <Accordion key={rIdx} title={region.name}>
+          <Accordion
+            key={rIdx}
+            title={region.name}
+            openDefault={region.name == "関東" ? true : false}
+          >
             <RegionWrapper>
               {prefectures
                 .filter(
