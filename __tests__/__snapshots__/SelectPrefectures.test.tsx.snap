@@ -29,7 +29,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
               class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
             >
               <label
-                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+                class="Checkbox__Label-sc-1y2c1io-0 kWCXfq"
               >
                 <input
                   class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
@@ -40,7 +40,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
                 </span>
               </label>
               <label
-                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+                class="Checkbox__Label-sc-1y2c1io-0 kWCXfq"
               >
                 <input
                   class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
@@ -51,7 +51,7 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
                 </span>
               </label>
               <label
-                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+                class="Checkbox__Label-sc-1y2c1io-0 kWCXfq"
               >
                 <input
                   class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"

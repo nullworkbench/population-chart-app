@@ -33,6 +33,13 @@ const Label = styled.label`
     border: 0.1rem solid #26c485;
     border-radius: 10rem;
     color: var(--color);
+    cursor: pointer;
+
+    // hover
+    transition: background 0.4s;
+    &:hover {
+      background: #ccf5e4;
+    }
   }
 
   & > input:checked + span {
