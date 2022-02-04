@@ -71,6 +71,11 @@ const AccordionButton = styled.div`
   align-items: center;
   padding: 0.5rem 0.8rem;
   cursor: pointer;
+  transition: background 0.4s;
+
+  &:hover {
+    background: #eee;
+  }
 `;
 
 const AccordionIcon = styled.div`
