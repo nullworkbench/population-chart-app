@@ -22,8 +22,8 @@ const defaultChartOptions: Highcharts.Options = {
       rotation: 0,
       align: "high",
       offset: 0,
-      x: -12,
-      y: -15,
+      x: -15,
+      y: -10,
     },
     labels: {
       formatter: function () {
