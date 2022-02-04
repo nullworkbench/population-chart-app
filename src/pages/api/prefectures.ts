@@ -1,7 +1,7 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { Prefecture } from "@/libs/ResasApi";
+import { Prefecture, isRESASError } from "@/libs/ResasApi";
 
 // resasApiを使うための基本設定を行なったaxiosインスタンス
 const resasApi = axios.create({
@@ -15,7 +15,14 @@ export default async function handler(
 ) {
   // ResasApiから都道府県一覧を取得して返す
   await resasApi.get("/prefectures").then((axiosRes) => {
-    console.log(axiosRes.data["result"]);
-    res.status(200).json(axiosRes.data["result"] as Prefecture[]);
+    const resasError = isRESASError(axiosRes.data);
+    if (resasError) {
+      console.log(`${resasError.statusCode}: ${resasError.errorMessage}`);
+      res.writeHead(resasError.statusCode, resasError.errorMessage);
+      const r = res.statusMessage;
+      console.log(r);
+    } else {
+      res.status(200).json(axiosRes.data["result"] as Prefecture[]);
+    }
   });
 }
