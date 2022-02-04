@@ -11,9 +11,6 @@ import { getPopulation, Population } from "@/libs/ResasApi";
 import population from "./apiMockData/population.json";
 const prefCode = 1;
 
-// ResasApiのエラーレスポンス
-import resasResponses from "./apiMockData/resasErrorResponses.json";
-
 // APIのモックサーバーを立てる
 const apiURL = `/api/population/${prefCode}`;
 const handlers = [
