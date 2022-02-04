@@ -121,5 +121,5 @@ const AccordionContentWrapper = styled.div`
 const AccordionContent = styled.div`
   padding: 0.8rem;
   padding-top: 0.3rem;
-  padding-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
 `;
