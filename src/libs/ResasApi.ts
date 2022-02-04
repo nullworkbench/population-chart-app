@@ -1,4 +1,12 @@
-import axios, { AxiosError } from "axios";
+// -------------------------------------
+//
+// RESAS-APIを使用する際に使う共通設定、関数
+//
+// RESAS-API: https://opendata.resas-portal.go.jp/docs/api/v1/index.html
+//
+// -------------------------------------
+
+import axios from "axios";
 import useSWR from "swr";
 
 // RESAS-API独自エラーを出す用の型
@@ -19,24 +27,21 @@ export type Population = {
   data: { year: number; value: number }[];
 };
 
-// RESAS APIのエンドポイント
-const endPoint = "https://opendata.resas-portal.go.jp/api/v1";
+// resasApiを使うための基本設定を行なったaxiosインスタンス
+export const resasApi = axios.create({
+  baseURL: "https://opendata.resas-portal.go.jp/api/v1",
+  headers: { "x-api-key": process.env.NEXT_PUBLIC_RESAS_API_KEY! },
+});
 
-// RESAS APIキーをheaderに設定
-const headers = { "X-API-KEY": process.env.NEXT_PUBLIC_RESAS_API_KEY! };
-
-// 共通で利用するフェッチャー
-const fetcher = (url: string) =>
-  axios.get(url, { headers }).then((res) => res.data);
+// SWRで利用するフェッチャー
+const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 // 都道府県情報を取得する
 export function usePrefectures() {
   const apiURL = "/api/prefectures";
-  const fetcher2 = (url: string) => axios.get(url).then((res) => res.data);
-  const { data, error } = useSWR(apiURL, fetcher2);
+  const { data, error } = useSWR(apiURL, fetcher);
 
   return {
-    // データは整形して返す
     prefectures: data as Prefecture[],
     isLoading: !error && !data,
     isError: error,
@@ -49,18 +54,8 @@ export async function getPopulation(
 ): Promise<Population | void> {
   try {
     console.log("get");
-    const res = await axios.get(
-      `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
-      { headers }
-    );
-    // Resas独自のエラーをチェック
-    const ResasError = isRESASError(res.data);
-    if (ResasError) {
-      console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
-      return;
-    }
-    // 成功
-    return { prefCode, data: res.data["result"]["data"][0]["data"] };
+    const res = await axios.get(`/api/population/${prefCode}`);
+    return res.data as Population;
   } catch (error) {
     // エラー
     console.log(`Error getting population: ${error}`);
