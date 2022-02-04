@@ -6,7 +6,8 @@ import { usePrefectures } from "@/libs/ResasApi";
 
 import Checkbox from "@/components/ui/Checkbox";
 import { ChangeEvent, useEffect } from "react";
-import Accordion from "./ui/Accordion";
+import Accordion from "@/components/ui/accordion/Accordion";
+import AccordionItem from "@/components/ui/accordion/AccordionItem";
 
 type Props = {
   handleCheckboxChange: Function;
@@ -51,37 +52,39 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   return (
     <div>
       {/* 地方ごとに分類して都道府県を表示 */}
-      {regionNames.map((region, rIdx) => {
-        return (
-          <Accordion
-            key={rIdx}
-            title={region.name}
-            openDefault={region.name == "関東" ? true : false}
-          >
-            <RegionWrapper>
-              {prefectures
-                .filter(
-                  (p) =>
-                    p.prefCode >= region.prefCodeRange.min &&
-                    p.prefCode <= region.prefCodeRange.max
-                )
-                .map((pref, prefIdx) => (
-                  <Checkbox
-                    key={prefIdx}
-                    // デフォルトでチェックする都道府県の場合はtrue
-                    checked={
-                      pref.prefCode == defaultCheckedPrefCode ? true : false
-                    }
-                    label={pref.prefName}
-                    handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      prop.handleCheckboxChange(e.target.checked, pref)
-                    }
-                  />
-                ))}
-            </RegionWrapper>
-          </Accordion>
-        );
-      })}
+      <Accordion>
+        {regionNames.map((region, rIdx) => {
+          return (
+            <AccordionItem
+              key={rIdx}
+              title={region.name}
+              openDefault={region.name == "関東" ? true : false}
+            >
+              <RegionWrapper>
+                {prefectures
+                  .filter(
+                    (p) =>
+                      p.prefCode >= region.prefCodeRange.min &&
+                      p.prefCode <= region.prefCodeRange.max
+                  )
+                  .map((pref, prefIdx) => (
+                    <Checkbox
+                      key={prefIdx}
+                      // デフォルトでチェックする都道府県の場合はtrue
+                      checked={
+                        pref.prefCode == defaultCheckedPrefCode ? true : false
+                      }
+                      label={pref.prefName}
+                      handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        prop.handleCheckboxChange(e.target.checked, pref)
+                      }
+                    />
+                  ))}
+              </RegionWrapper>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
     </div>
   );
 };
