@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Prefecture, Population, getPopulation } from "@/libs/ResasApi";
 import SelectPrefectures from "@/components/SelectPrefectures";
 import Chart from "@/components/Chart";
+import Highcharts from "highcharts";
 
 const Home: NextPage = () => {
   // 選択中の都道府県のPrefCode
@@ -11,26 +12,8 @@ const Home: NextPage = () => {
 
   // グラフの設定
   const [chartOptions, setChartOptions] = useState<Highcharts.Options>({
-    //グラフタイトル
-    title: { text: "都道府県別の総人口推移", margin: 30 },
-    subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
-    // X軸のラベル
-    xAxis: {
-      title: { text: "年度", align: "high", offset: 0, x: 10, y: 25 },
-      categories: ["A", "B", "C"],
-    },
-    yAxis: {
-      title: {
-        text: "人口数",
-        rotation: 0,
-        align: "high",
-        offset: 0,
-        x: -12,
-        y: -15,
-      },
-    },
-    // グラフ
-    series: [],
+    xAxis: { categories: [] }, // X軸
+    series: [], // グラフ
   });
 
   // チェックを切り替えたとき
