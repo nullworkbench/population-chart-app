@@ -1,3 +1,10 @@
+// -------------------------------------
+//
+// Accordionの一つひとつの行のコンポーネント
+// 必ずAccordionコンポーネントでラップする
+//
+// -------------------------------------
+
 import styled from "styled-components";
 import { useEffect, useRef, useState } from "react";
 
@@ -37,7 +44,7 @@ const Accordion: React.FC<Props> = (prop) => {
   }
 
   return (
-    <AccordionWrapper>
+    <Wrapper className="AccordionItem">
       {/* 開閉ボタン */}
       <AccordionButton onClick={() => toggleIsOpen()}>
         <div>{prop.title}</div>
@@ -47,7 +54,7 @@ const Accordion: React.FC<Props> = (prop) => {
       <AccordionContentWrapper ref={contentWrapperRef}>
         <AccordionContent>{prop.children}</AccordionContent>
       </AccordionContentWrapper>
-    </AccordionWrapper>
+    </Wrapper>
   );
 };
 
@@ -56,10 +63,7 @@ export default Accordion;
 // CSS Transitionの時間
 const transitionDuration = "0.4s";
 
-const AccordionWrapper = styled.div`
-  --borderStyle: 1px solid #e5e5e5;
-  border-top: var(--borderStyle);
-  border-bottom: var(--borderStyle);
+const Wrapper = styled.div`
   padding: 0.5rem 0.8rem;
 `;
 
