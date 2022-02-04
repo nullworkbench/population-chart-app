@@ -6,6 +6,7 @@ import { usePrefectures } from "@/libs/ResasApi";
 
 import Checkbox from "@/components/ui/Checkbox";
 import { ChangeEvent, useEffect } from "react";
+import Accordion from "./ui/Accordion";
 
 type Props = {
   handleCheckboxChange: Function;
@@ -52,9 +53,8 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
       {/* 地方ごとに分類して都道府県を表示 */}
       {regionNames.map((region, rIdx) => {
         return (
-          <RegionWrapper key={rIdx}>
-            <p>{region.name}</p>
-            <div className="prefs">
+          <Accordion key={rIdx} title={region.name}>
+            <RegionWrapper>
               {prefectures
                 .filter(
                   (p) =>
@@ -74,8 +74,8 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                     }
                   />
                 ))}
-            </div>
-          </RegionWrapper>
+            </RegionWrapper>
+          </Accordion>
         );
       })}
     </div>
@@ -83,15 +83,9 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 };
 
 const RegionWrapper = styled.div`
-  margin-bottom: 1rem;
-  & > p {
-    margin-bottom: 0.2rem;
-  }
-  & > .prefs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem 0.3rem;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.3rem;
 `;
 
 export default SelectPrefectures;
