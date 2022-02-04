@@ -31,11 +31,10 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 
   // 都道府県の取得が終わったタイミングで、デフォルトでオンの都道府県をチェックする
   useEffect(() => {
-    const prefs = prefectures();
-    if (prefs) {
+    if (!isLoading && !isError) {
       prop.handleCheckboxChange(
         true,
-        prefs.find((p) => p.prefCode == defaultCheckedPrefCode)
+        prefectures.find((p) => p.prefCode == defaultCheckedPrefCode)
       );
     }
     // propなども含めると無限ループに陥るためルールを無効化
@@ -44,49 +43,44 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 
   if (isLoading) {
     return <p data-testid="loadingText">Loading...</p>;
-  } else {
-    const prefs = prefectures();
-    if (prefs) {
-      return (
-        <div>
-          {/* 地方ごとに分類して都道府県を表示 */}
-          {regionNames.map((region, rIdx) => {
-            return (
-              <RegionWrapper key={rIdx}>
-                <p>{region.name}</p>
-                <div className="prefs">
-                  {prefs
-                    .filter(
-                      (p) =>
-                        p.prefCode >= region.prefCodeRange.min &&
-                        p.prefCode <= region.prefCodeRange.max
-                    )
-                    .map((pref, prefIdx) => (
-                      <CheckboxWrapper key={prefIdx}>
-                        <Checkbox
-                          // デフォルトでチェックする都道府県の場合はtrue
-                          checked={
-                            pref.prefCode == defaultCheckedPrefCode
-                              ? true
-                              : false
-                          }
-                          label={pref.prefName}
-                          handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                            prop.handleCheckboxChange(e.target.checked, pref)
-                          }
-                        />
-                      </CheckboxWrapper>
-                    ))}
-                </div>
-              </RegionWrapper>
-            );
-          })}
-        </div>
-      );
-    } else {
-      return <p data-testid="errorMessage">An Error Occured. Please Reload.</p>;
-    }
   }
+  if (isError) {
+    return <p data-testid="errorMessage">An Error Occured. Please Reload.</p>;
+  }
+  return (
+    <div>
+      {/* 地方ごとに分類して都道府県を表示 */}
+      {regionNames.map((region, rIdx) => {
+        return (
+          <RegionWrapper key={rIdx}>
+            <p>{region.name}</p>
+            <div className="prefs">
+              {prefectures
+                .filter(
+                  (p) =>
+                    p.prefCode >= region.prefCodeRange.min &&
+                    p.prefCode <= region.prefCodeRange.max
+                )
+                .map((pref, prefIdx) => (
+                  <CheckboxWrapper key={prefIdx}>
+                    <Checkbox
+                      // デフォルトでチェックする都道府県の場合はtrue
+                      checked={
+                        pref.prefCode == defaultCheckedPrefCode ? true : false
+                      }
+                      label={pref.prefName}
+                      handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        prop.handleCheckboxChange(e.target.checked, pref)
+                      }
+                    />
+                  </CheckboxWrapper>
+                ))}
+            </div>
+          </RegionWrapper>
+        );
+      })}
+    </div>
+  );
 };
 
 const RegionWrapper = styled.div`
