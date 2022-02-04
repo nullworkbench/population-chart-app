@@ -19,7 +19,16 @@ const Home: NextPage = () => {
       title: { text: "年度" },
       categories: ["A", "B", "C"],
     },
-    yAxis: { title: { text: "総人口" } },
+    yAxis: {
+      title: {
+        text: "人口数",
+        rotation: 0,
+        align: "high",
+        offset: 0,
+        x: -12,
+        y: -15,
+      },
+    },
     // グラフ
     series: [],
   });
