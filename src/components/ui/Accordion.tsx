@@ -26,7 +26,8 @@ const Accordion: React.FC = () => {
   return (
     <AccordionWrapper>
       <AccordionButton onClick={() => toggleIsOpen()}>
-        Accordion Button
+        <div>Accordion Button</div>
+        <AccordionIcon />
       </AccordionButton>
       <AccordionContentWrapper ref={contentWrapperRef}>
         <AccordionContent>
@@ -50,7 +51,39 @@ const AccordionWrapper = styled.div`
   padding: 0.5rem 0.8rem;
 `;
 
-const AccordionButton = styled.div``;
+const AccordionButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const AccordionIcon = styled.div`
+  --w: 0.5rem;
+  width: var(--w);
+  position: relative;
+  margin-right: calc(var(--w) / 2);
+
+  &::before,
+  &::after {
+    // position
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    // size
+    width: calc(var(--w) / 1.2);
+    // style
+    border-top: 2px solid #777;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+    left: 50%;
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+`;
 
 const AccordionContentWrapper = styled.div`
   height: 0;
