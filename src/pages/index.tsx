@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useState } from "react";
+import styled from "styled-components";
 
 import { Prefecture, Population, getPopulation } from "@/libs/ResasApi";
 import SelectPrefectures from "@/components/SelectPrefectures";
@@ -62,11 +63,17 @@ const Home: NextPage = () => {
   return (
     <>
       {/* 都道府県一覧 */}
-      <SelectPrefectures handleCheckboxChange={handleCheckboxChange} />
+      <SelectPrefsWrapper>
+        <SelectPrefectures handleCheckboxChange={handleCheckboxChange} />
+      </SelectPrefsWrapper>
       {/* グラフ */}
       <Chart chartOptions={chartOptions} />
     </>
   );
 };
+
+const SelectPrefsWrapper = styled.div`
+  margin-bottom: 2rem;
+`;
 
 export default Home;
