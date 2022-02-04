@@ -9,6 +9,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
+        {/* Title */}
+        <title>Population Chart</title>
         {/* favicon */}
         <link rel="icon" type="image/svg" href="/favicon.svg" />
       </Head>
