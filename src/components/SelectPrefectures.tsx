@@ -6,6 +6,8 @@ import { usePrefectures } from "@/libs/ResasApi";
 
 import Checkbox from "@/components/ui/Checkbox";
 import { ChangeEvent, useEffect } from "react";
+import Accordion from "@/components/ui/accordion/Accordion";
+import AccordionItem from "@/components/ui/accordion/AccordionItem";
 
 type Props = {
   handleCheckboxChange: Function;
@@ -50,20 +52,24 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   return (
     <div>
       {/* 地方ごとに分類して都道府県を表示 */}
-      {regionNames.map((region, rIdx) => {
-        return (
-          <RegionWrapper key={rIdx}>
-            <p>{region.name}</p>
-            <div className="prefs">
-              {prefectures
-                .filter(
-                  (p) =>
-                    p.prefCode >= region.prefCodeRange.min &&
-                    p.prefCode <= region.prefCodeRange.max
-                )
-                .map((pref, prefIdx) => (
-                  <CheckboxWrapper key={prefIdx}>
+      <Accordion>
+        {regionNames.map((region, rIdx) => {
+          return (
+            <AccordionItem
+              key={rIdx}
+              title={region.name}
+              openDefault={region.name == "関東" ? true : false}
+            >
+              <RegionWrapper>
+                {prefectures
+                  .filter(
+                    (p) =>
+                      p.prefCode >= region.prefCodeRange.min &&
+                      p.prefCode <= region.prefCodeRange.max
+                  )
+                  .map((pref, prefIdx) => (
                     <Checkbox
+                      key={prefIdx}
                       // デフォルトでチェックする都道府県の場合はtrue
                       checked={
                         pref.prefCode == defaultCheckedPrefCode ? true : false
@@ -73,30 +79,20 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                         prop.handleCheckboxChange(e.target.checked, pref)
                       }
                     />
-                  </CheckboxWrapper>
-                ))}
-            </div>
-          </RegionWrapper>
-        );
-      })}
+                  ))}
+              </RegionWrapper>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
     </div>
   );
 };
 
 const RegionWrapper = styled.div`
-  margin-bottom: 0.5rem;
-  & > p {
-    margin-bottom: 0.2rem;
-  }
-  & > .prefs {
-    display: flex;
-    flex-wrap: wrap;
-  }
-`;
-
-const CheckboxWrapper = styled.div`
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.3rem;
 `;
 
 export default SelectPrefectures;
