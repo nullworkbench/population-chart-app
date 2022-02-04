@@ -4,24 +4,14 @@ import { useState } from "react";
 import { Prefecture, Population, getPopulation } from "@/libs/ResasApi";
 import SelectPrefectures from "@/components/SelectPrefectures";
 import Chart from "@/components/Chart";
+import Highcharts from "highcharts";
 
 const Home: NextPage = () => {
   // 選択中の都道府県のPrefCode
   const [selectedPrefs, setSelectedPrefs] = useState<Prefecture[]>([]);
 
   // グラフの設定
-  const [chartOptions, setChartOptions] = useState<Highcharts.Options>({
-    //グラフタイトル
-    title: { text: "都道府県別の総人口推移" },
-    subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
-    // X軸のラベル
-    xAxis: {
-      categories: ["A", "B", "C"],
-    },
-    yAxis: { title: { text: "総人口" } },
-    // グラフ
-    series: [],
-  });
+  const [chartOptions, setChartOptions] = useState<Highcharts.Options>({});
 
   // チェックを切り替えたとき
   function handleCheckboxChange(checked: boolean, pref: Prefecture) {
