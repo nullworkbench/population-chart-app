@@ -25,7 +25,9 @@ const Accordion: React.FC = () => {
 
   return (
     <AccordionWrapper>
-      <div onClick={() => toggleIsOpen()}>Accordion Button</div>
+      <AccordionButton onClick={() => toggleIsOpen()}>
+        Accordion Button
+      </AccordionButton>
       <AccordionContentWrapper ref={contentWrapperRef}>
         <AccordionContent>
           <span>Accordion Content</span>
@@ -48,9 +50,13 @@ const AccordionWrapper = styled.div`
   padding: 0.5rem 0.8rem;
 `;
 
+const AccordionButton = styled.div``;
+
 const AccordionContentWrapper = styled.div`
   height: 0;
   overflow: hidden;
   transition: height 0.4s;
 `;
-const AccordionContent = styled.div``;
+const AccordionContent = styled.div`
+  padding-top: 1rem;
+`;
