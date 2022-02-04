@@ -4,7 +4,7 @@ import { resasApi, isRESASError, Population } from "@/libs/ResasApi";
 import { AxiosError } from "axios";
 
 // 拡張してprefCodeを型補完（queryはstring型のみ）
-interface ExNextApiRequest extends NextApiRequest {
+export interface ExNextApiRequest extends NextApiRequest {
   query: {
     prefCode: string;
   };
