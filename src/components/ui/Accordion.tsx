@@ -41,7 +41,12 @@ const Accordion: React.FC = () => {
 
 export default Accordion;
 
-const AccordionWrapper = styled.div``;
+const AccordionWrapper = styled.div`
+  --borderStyle: 1px solid #e5e5e5;
+  border-top: var(--borderStyle);
+  border-bottom: var(--borderStyle);
+  padding: 0.5rem 0.8rem;
+`;
 
 const AccordionContentWrapper = styled.div`
   height: 0;
