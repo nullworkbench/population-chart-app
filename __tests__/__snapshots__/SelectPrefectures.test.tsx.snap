@@ -4,120 +4,218 @@ exports[`コンポーネントを描画 47都道府県のチェックボック�
 <DocumentFragment>
   <div>
     <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
+      class="Accordion__AccordionWrapper-sc-nw0nsq-0 jOgKWk"
     >
-      <p>
-        北海道・東北
-      </p>
       <div
-        class="prefs"
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
       >
         <div
-          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
         >
-          <label
-            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-          >
-            <input
-              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-              type="checkbox"
-            />
-            <span>
-              北海道
-            </span>
-          </label>
+          <div>
+            北海道・東北
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
         </div>
         <div
-          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
         >
-          <label
-            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
           >
-            <input
-              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-              type="checkbox"
-            />
-            <span>
-              青森県
-            </span>
-          </label>
-        </div>
-        <div
-          class="SelectPrefectures__CheckboxWrapper-sc-qkgodw-1 gpPXyy"
-        >
-          <label
-            class="Checkbox__Label-sc-1y2c1io-0 hLsZxk"
-          >
-            <input
-              class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
-              type="checkbox"
-            />
-            <span>
-              岩手県
-            </span>
-          </label>
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            >
+              <label
+                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+              >
+                <input
+                  class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+                  type="checkbox"
+                />
+                <span>
+                  北海道
+                </span>
+              </label>
+              <label
+                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+              >
+                <input
+                  class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+                  type="checkbox"
+                />
+                <span>
+                  青森県
+                </span>
+              </label>
+              <label
+                class="Checkbox__Label-sc-1y2c1io-0 keKgbl"
+              >
+                <input
+                  class="Checkbox__Input-sc-1y2c1io-1 dsaUmM"
+                  type="checkbox"
+                />
+                <span>
+                  岩手県
+                </span>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        関東
-      </p>
       <div
-        class="prefs"
-      />
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        北陸・信越
-      </p>
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            関東
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs isOpen"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+          style="height: 0px;"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
       <div
-        class="prefs"
-      />
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        東海
-      </p>
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            北陸・信越
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
       <div
-        class="prefs"
-      />
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        近畿
-      </p>
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            東海
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
       <div
-        class="prefs"
-      />
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        中国・四国
-      </p>
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            近畿
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
       <div
-        class="prefs"
-      />
-    </div>
-    <div
-      class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 fNZwpL"
-    >
-      <p>
-        九州・沖縄
-      </p>
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            中国・四国
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
       <div
-        class="prefs"
-      />
+        class="AccordionItem__Wrapper-sc-1mxksfm-0 fzStzn AccordionItem"
+      >
+        <div
+          class="AccordionItem__AccordionButton-sc-1mxksfm-1 csAYVK"
+        >
+          <div>
+            九州・沖縄
+          </div>
+          <div
+            class="AccordionItem__AccordionIcon-sc-1mxksfm-2 fUcRTs"
+          />
+        </div>
+        <div
+          class="AccordionItem__AccordionContentWrapper-sc-1mxksfm-3 gnHypy"
+        >
+          <div
+            class="AccordionItem__AccordionContent-sc-1mxksfm-4 djnreF"
+          >
+            <div
+              class="SelectPrefectures__RegionWrapper-sc-qkgodw-0 faAJOD"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
