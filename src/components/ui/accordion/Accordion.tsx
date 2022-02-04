@@ -14,13 +14,11 @@ export default Accordion;
 
 const AccordionWrapper = styled.div`
   & > .AccordionItem {
-    --borderStyle: 1px solid #e5e5e5;
+    --borderStyle: 1px solid #e1e1e1;
     border-bottom: var(--borderStyle);
 
     &:nth-of-type(1) {
       border-top: var(--borderStyle);
-    }
-    &:nth-of-type(odd) {
     }
   }
 `;
