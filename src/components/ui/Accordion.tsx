@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { useRef, useState } from "react";
 
-const Accordion: React.FC = () => {
+type Props = {
+  title: string;
+};
+
+const Accordion: React.FC<Props> = (prop) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const contentWrapperRef = useRef<HTMLDivElement>(null);
@@ -25,18 +29,14 @@ const Accordion: React.FC = () => {
 
   return (
     <AccordionWrapper>
+      {/* 開閉ボタン */}
       <AccordionButton onClick={() => toggleIsOpen()}>
-        <div>Accordion Button</div>
+        <div>{prop.title}</div>
         <AccordionIcon className={isOpen ? "isOpen" : ""} />
       </AccordionButton>
+      {/* 伸縮して表示が切り替わるコンテンツ */}
       <AccordionContentWrapper ref={contentWrapperRef}>
-        <AccordionContent>
-          <span>Accordion Content</span>
-          <p>
-            contentcontent contentcontent contentcontent contentcont
-            entcontentcontentcontentcontent contentcontent contentcontent
-          </p>
-        </AccordionContent>
+        <AccordionContent>{prop.children}</AccordionContent>
       </AccordionContentWrapper>
     </AccordionWrapper>
   );
