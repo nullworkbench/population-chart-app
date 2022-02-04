@@ -29,7 +29,7 @@ const Label = styled.label`
   & > span {
     display: block;
     // width: var(--w);
-    padding: 0.2rem 1rem;
+    padding: 0.2rem 0.6rem;
     border: 0.1rem solid #26c485;
     border-radius: 10rem;
     color: var(--color);

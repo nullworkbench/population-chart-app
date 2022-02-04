@@ -62,18 +62,17 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                     p.prefCode <= region.prefCodeRange.max
                 )
                 .map((pref, prefIdx) => (
-                  <CheckboxWrapper key={prefIdx}>
-                    <Checkbox
-                      // デフォルトでチェックする都道府県の場合はtrue
-                      checked={
-                        pref.prefCode == defaultCheckedPrefCode ? true : false
-                      }
-                      label={pref.prefName}
-                      handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        prop.handleCheckboxChange(e.target.checked, pref)
-                      }
-                    />
-                  </CheckboxWrapper>
+                  <Checkbox
+                    key={prefIdx}
+                    // デフォルトでチェックする都道府県の場合はtrue
+                    checked={
+                      pref.prefCode == defaultCheckedPrefCode ? true : false
+                    }
+                    label={pref.prefName}
+                    handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      prop.handleCheckboxChange(e.target.checked, pref)
+                    }
+                  />
                 ))}
             </div>
           </RegionWrapper>
@@ -84,19 +83,15 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
 };
 
 const RegionWrapper = styled.div`
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   & > p {
     margin-bottom: 0.2rem;
   }
   & > .prefs {
     display: flex;
     flex-wrap: wrap;
+    gap: 0.3rem 0.3rem;
   }
-`;
-
-const CheckboxWrapper = styled.div`
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
 `;
 
 export default SelectPrefectures;
