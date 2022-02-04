@@ -9,11 +9,13 @@ const resasApi = axios.create({
   headers: { "x-api-key": process.env.NEXT_PUBLIC_RESAS_API_KEY! },
 });
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Prefecture[] | string>
 ) {
   // ResasApiから都道府県一覧を取得して返す
-  resasApi.get("/prefectures").then((axiosRes) => {});
-  res.status(200).json("John");
+  await resasApi.get("/prefectures").then((axiosRes) => {
+    console.log(axiosRes.data["result"]);
+    res.status(200).json(axiosRes.data["result"] as Prefecture[]);
+  });
 }

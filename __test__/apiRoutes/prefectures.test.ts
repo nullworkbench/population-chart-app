@@ -34,7 +34,7 @@ describe("/api/prefecturesでResasApiを叩いて都道府県一覧を返す内�
   test("正しく取得できる場合", async () => {
     const mockReq = httpMocks.createRequest<NextApiRequest>();
     const mockRes = httpMocks.createResponse<NextApiResponse>();
-    prefecutresApiRoute(mockReq, mockRes);
-    expect(mockRes._getJSONData()).toStrictEqual("Jhn");
+    await prefecutresApiRoute(mockReq, mockRes);
+    expect(mockRes._getJSONData()).toStrictEqual(prefectures.result);
   });
 });
