@@ -16,6 +16,7 @@ const Home: NextPage = () => {
     subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
     // X軸のラベル
     xAxis: {
+      title: { text: "年度" },
       categories: ["A", "B", "C"],
     },
     yAxis: { title: { text: "総人口" } },
