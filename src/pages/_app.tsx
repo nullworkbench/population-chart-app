@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import styled from "styled-components";
 import "modern-css-reset/dist/reset.min.css"; // Reset CSS
 
@@ -6,10 +7,16 @@ import Title from "@/components/ui/Title";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Wrapper>
-      <Title />
-      <Component {...pageProps} />
-    </Wrapper>
+    <>
+      <Head>
+        {/* favicon */}
+        <link rel="icon" type="image/svg" href="/favicon.svg" />
+      </Head>
+      <Wrapper>
+        <Title />
+        <Component {...pageProps} />
+      </Wrapper>
+    </>
   );
 }
 
