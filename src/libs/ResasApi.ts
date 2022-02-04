@@ -55,18 +55,8 @@ export async function getPopulation(
 ): Promise<Population | void> {
   try {
     console.log("get");
-    const res = await axios.get(
-      `${endPoint}/population/composition/perYear?prefCode=${prefCode}&cityCode=-`,
-      { headers }
-    );
-    // Resas独自のエラーをチェック
-    const ResasError = isRESASError(res.data);
-    if (ResasError) {
-      console.log(`${ResasError.statusCode}: ${ResasError.errorMessage}`);
-      return;
-    }
-    // 成功
-    return { prefCode, data: res.data["result"]["data"][0]["data"] };
+    const res = await axios.get(`/api/population/${prefCode}`);
+    return res.data as Population;
   } catch (error) {
     // エラー
     console.log(`Error getting population: ${error}`);
