@@ -75,4 +75,20 @@ describe("/api/population/[prefCode]でResasApiを叩いて人口情報を返す
     expect(mockRes._getStatusCode()).toStrictEqual(Number(error.statusCode));
     expect(mockRes._getStatusMessage()).toStrictEqual(error.message);
   });
+
+  test("API通信時に何らかの障害発生した場合にエラーを返していることを確認", async () => {
+    // エラーになるようにモックサーバーを上書き
+    server.use(rest.get(apiURL, (req, res, ctx) => res(ctx.status(500))));
+
+    // テストに使用するリクエスト / レスポンス
+    const mockReq = httpMocks.createRequest<ExNextApiRequest>({
+      query: { prefCode },
+    });
+    const mockRes = httpMocks.createResponse<NextApiResponse>();
+
+    await populationApiRoute(mockReq, mockRes);
+
+    expect(mockRes._getStatusCode()).toStrictEqual(500);
+    expect(mockRes._getStatusMessage()).not.toBeNull();
+  });
 });
