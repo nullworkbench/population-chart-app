@@ -66,14 +66,54 @@ const Home: NextPage = () => {
       <SelectPrefsWrapper>
         <SelectPrefectures handleCheckboxChange={handleCheckboxChange} />
       </SelectPrefsWrapper>
-      {/* グラフ */}
-      <Chart chartOptions={chartOptions} />
+
+      <ChartWrapper>
+        {/* 都道府県を選択していないときは選択を促すメッセージを表示 */}
+        <SelectPrefsAlert className={selectedPrefs.length == 0 ? "show" : ""}>
+          <p>都道府県を選択すると、ここに総人口推移のグラフが表示されます。</p>
+        </SelectPrefsAlert>
+        {/* グラフ */}
+        <Chart chartOptions={chartOptions} />
+      </ChartWrapper>
     </>
   );
 };
 
 const SelectPrefsWrapper = styled.div`
   margin-bottom: 2rem;
+`;
+
+const ChartWrapper = styled.div`
+  position: relative;
+`;
+
+const SelectPrefsAlert = styled.div`
+  // flex
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // position
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  // size
+  width: 100%;
+  height: 103%;
+  // style
+  background: #f1f1f1;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+
+  // transition
+  transition: opacity 0.4s, visibility 0.4s;
+  opacity: 0;
+  visibility: hidden;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
 `;
 
 export default Home;
