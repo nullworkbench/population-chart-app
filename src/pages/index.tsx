@@ -68,7 +68,9 @@ const Home: NextPage = () => {
       </SelectPrefsWrapper>
       {/* 都道府県を選択していないときは選択を促すように */}
       {selectedPrefs.length == 0 ? (
-        <div>都道府県を選択してください</div>
+        <SelectPrefsAlert>
+          <p>都道府県を選択すると、ここに総人口推移のグラフが表示されます。</p>
+        </SelectPrefsAlert>
       ) : (
         <>
           {/* グラフ */}
@@ -81,6 +83,21 @@ const Home: NextPage = () => {
 
 const SelectPrefsWrapper = styled.div`
   margin-bottom: 2rem;
+`;
+
+const SelectPrefsAlert = styled.div`
+  // flex
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // size
+  width: 100%;
+  height: 20rem;
+  // style
+  background: #f1f1f1;
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
 `;
 
 export default Home;
