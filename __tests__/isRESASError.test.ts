@@ -3,7 +3,7 @@ import { cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 // テスト対象
-import { RESASError, isRESASError } from "@/libs/ResasApi";
+import { ResasError, isRESASError } from "@/libs/ResasApi";
 
 // モックデータ
 import data from "./apiMockData/resasErrorResponses.json";
@@ -15,7 +15,7 @@ afterEach(() => {
 // テスト内容
 describe("RESAS-APIのエラーが検出できるか", () => {
   test("400 Bad Request", () => {
-    const expectedError: RESASError = {
+    const expectedError: ResasError = {
       statusCode: 400,
       errorMessage: "Some Error Occured.",
     };
@@ -23,7 +23,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
   });
 
   test("403 Forbidden", () => {
-    const expectedError: RESASError = {
+    const expectedError: ResasError = {
       statusCode: 403,
       errorMessage: "Forbidden.",
     };
@@ -31,7 +31,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
   });
 
   test("404 Not Found", () => {
-    const expectedError: RESASError = {
+    const expectedError: ResasError = {
       statusCode: 404,
       errorMessage: "404. That's an error.",
     };
@@ -39,7 +39,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
   });
 
   test("429 Too Many Requests", () => {
-    const expectedError: RESASError = {
+    const expectedError: ResasError = {
       statusCode: 429,
       errorMessage: "Too Many Requests.",
     };
