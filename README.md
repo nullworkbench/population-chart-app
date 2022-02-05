@@ -36,9 +36,9 @@ npm install
 
 3. 環境変数
 
-`.env.local`および`.env.test.local`名でプロジェクトルートへ下記情報を記述してください
+`.env.local`名でプロジェクトルートへ下記情報を記述してください
 ```
-NEXT_PUBLIC_RESAS_API_KEY=RESAS-APIのAPIキーを入力
+RESAS_API_KEY=RESAS-APIのAPIキーを入力
 ```
 
 5. 開発サーバー起動
