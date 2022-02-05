@@ -1,4 +1,4 @@
-import axios, { Axios, AxiosError } from "axios";
+import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { resasApi, Prefecture, isResasError } from "@/libs/ResasApi";
