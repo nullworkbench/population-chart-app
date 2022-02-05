@@ -3,12 +3,12 @@
 都道府県別の総人口推移グラフを表示するアプリ
 
 
-## Vercelで公開中
+## Deployed on Vercel
 
 [Population Chart](https://population-chart-app.vercel.app/)
 
 
-## 技術スタック
+## Technology Stack
 
 ### 基本パッケージ
 - [Next.js](https://nextjs.org/)（Reactフレームワーク）
@@ -22,7 +22,7 @@
 - [RESAS(地域経済分析システム) API](https://opendata.resas-portal.go.jp/)
 
 
-## 実行方法
+## Setup
 
 1. リポジトリのクローン
 ```
@@ -50,3 +50,10 @@ npm run dev
 ```
 npm run test
 ```
+
+
+## Documents
+
+その他命名規則などのドキュメントはNotionへ
+
+[Population Chart - Notion](https://nullworkbench.notion.site/Population-Chart-dc898865f1b84c22aea66e267003b9b8)
