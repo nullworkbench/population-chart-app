@@ -36,7 +36,7 @@ async function useHandler(req: ExNextApiRequest, res: NextApiResponse) {
       if (axios.isAxiosError(error) && error.response) {
         res.writeHead(Number(error.response.status), error.message);
       } else {
-        console.log(`Error getting population: ${error}`);
+        res.writeHead(500, `${error}`);
       }
     });
 }

@@ -26,7 +26,7 @@ export default async function handler(
       if (axios.isAxiosError(error) && error.response) {
         res.writeHead(Number(error.response.status), error.message);
       } else {
-        console.log(`Error getting prefectures: ${error}`);
+        res.writeHead(500, `${error}`);
       }
     });
 }
