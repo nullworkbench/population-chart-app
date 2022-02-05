@@ -3,7 +3,7 @@
 都道府県別の総人口推移グラフを表示するアプリ
 
 
-## Deoloyed on Vercel
+## Deployed on Vercel
 
 [Population Chart](https://population-chart-app.vercel.app/)
 
@@ -56,4 +56,4 @@ npm run test
 
 その他命名規則などのドキュメントはNotionへ
 
-[Population Chart - Notion](https://famous-dresser-8e0.notion.site/Population-Chart-dc898865f1b84c22aea66e267003b9b8)
+[Population Chart - Notion](https://nullworkbench.notion.site/Population-Chart-dc898865f1b84c22aea66e267003b9b8)
