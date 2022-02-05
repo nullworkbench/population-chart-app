@@ -66,8 +66,15 @@ const Home: NextPage = () => {
       <SelectPrefsWrapper>
         <SelectPrefectures handleCheckboxChange={handleCheckboxChange} />
       </SelectPrefsWrapper>
-      {/* グラフ */}
-      <Chart chartOptions={chartOptions} />
+      {/* 都道府県を選択していないときは選択を促すように */}
+      {selectedPrefs.length == 0 ? (
+        <div>都道府県を選択してください</div>
+      ) : (
+        <>
+          {/* グラフ */}
+          <Chart chartOptions={chartOptions} />
+        </>
+      )}
     </>
   );
 };
