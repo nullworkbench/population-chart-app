@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { resasApi, isResasError, Population } from "@/libs/ResasApi";
-import { AxiosError } from "axios";
+import axios from "axios";
 
 // 拡張してprefCodeを型補完（queryはstring型のみ）
 export interface ExNextApiRequest extends NextApiRequest {
@@ -32,8 +32,12 @@ async function useHandler(req: ExNextApiRequest, res: NextApiResponse) {
         res.status(200).json(population);
       }
     })
-    .catch((error: AxiosError) => {
-      res.writeHead(Number(error.code ?? 500), error.message);
+    .catch((error) => {
+      if (axios.isAxiosError(error) && error.response) {
+        res.writeHead(Number(error.response.status), error.message);
+      } else {
+        console.log(`Error getting population: ${error}`);
+      }
     });
 }
 
