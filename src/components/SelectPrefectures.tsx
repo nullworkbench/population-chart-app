@@ -24,7 +24,7 @@ const regionNames = [
   { name: "九州・沖縄", prefCodeRange: { min: 40, max: 47 } },
 ];
 
-const SelectPrefectures: React.FC<Props> = (prop) => {
+const SelectPrefectures: React.FC<Props> = (props) => {
   // 都道府県一覧を取得
   const { prefectures, isLoading, isError } = usePrefectures();
 
@@ -34,7 +34,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
   // 都道府県の取得が終わったタイミングで、デフォルトでオンの都道府県をチェックする
   useEffect(() => {
     if (!isLoading && !isError) {
-      prop.handleCheckboxChange(
+      props.handleCheckboxChange(
         true,
         prefectures.find((p) => p.prefCode == defaultCheckedPrefCode)
       );
@@ -76,7 +76,7 @@ const SelectPrefectures: React.FC<Props> = (prop) => {
                       }
                       label={pref.prefName}
                       handleOnChange={(e: ChangeEvent<HTMLInputElement>) =>
-                        prop.handleCheckboxChange(e.target.checked, pref)
+                        props.handleCheckboxChange(e.target.checked, pref)
                       }
                     />
                   ))}
