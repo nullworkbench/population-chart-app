@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { resasApi, isRESASError, Population } from "@/libs/ResasApi";
+import { resasApi, isResasError, Population } from "@/libs/ResasApi";
 import { AxiosError } from "axios";
 
 // 拡張してprefCodeを型補完（queryはstring型のみ）
@@ -18,7 +18,7 @@ async function useHandler(req: ExNextApiRequest, res: NextApiResponse) {
     .get(`/population/composition/perYear?prefCode=${prefCode}&cityCode=-`)
     .then((axiosRes) => {
       // ResasApi独自のエラーをチェック
-      const resasError = isRESASError(axiosRes.data);
+      const resasError = isResasError(axiosRes.data);
       if (resasError) {
         // エラーがあればステータスコードとエラーメッセージを書き込む
         console.log(`${resasError.statusCode}: ${resasError.errorMessage}`);

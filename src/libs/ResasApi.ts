@@ -64,7 +64,7 @@ export async function getPopulation(
 }
 
 // 取得は成功しているが、RESAS-APIのエラーがあるか判定する
-export function isRESASError(data: any): ResasError | void {
+export function isResasError(data: any): ResasError | void {
   const objKeys = Object.keys(data);
   if (objKeys.includes("statusCode")) {
     // statusCodeがあるときは何らかのエラーが発生している

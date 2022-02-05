@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { resasApi, Prefecture, isRESASError } from "@/libs/ResasApi";
+import { resasApi, Prefecture, isResasError } from "@/libs/ResasApi";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,7 +12,7 @@ export default async function handler(
     .get("/prefectures")
     .then((axiosRes) => {
       // ResasApi独自のエラーをチェック
-      const resasError = isRESASError(axiosRes.data);
+      const resasError = isResasError(axiosRes.data);
       if (resasError) {
         // エラーがあればステータスコードとエラーメッセージを書き込む
         console.log(`${resasError.statusCode}: ${resasError.errorMessage}`);

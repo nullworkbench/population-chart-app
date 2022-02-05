@@ -3,7 +3,7 @@ import { cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 // テスト対象
-import { ResasError, isRESASError } from "@/libs/ResasApi";
+import { ResasError, isResasError } from "@/libs/ResasApi";
 
 // モックデータ
 import data from "./apiMockData/resasErrorResponses.json";
@@ -19,7 +19,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
       statusCode: 400,
       errorMessage: "Some Error Occured.",
     };
-    expect(isRESASError(data[400])).toStrictEqual(expectedError);
+    expect(isResasError(data[400])).toStrictEqual(expectedError);
   });
 
   test("403 Forbidden", () => {
@@ -27,7 +27,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
       statusCode: 403,
       errorMessage: "Forbidden.",
     };
-    expect(isRESASError(data[403])).toStrictEqual(expectedError);
+    expect(isResasError(data[403])).toStrictEqual(expectedError);
   });
 
   test("404 Not Found", () => {
@@ -35,7 +35,7 @@ describe("RESAS-APIのエラーが検出できるか", () => {
       statusCode: 404,
       errorMessage: "404. That's an error.",
     };
-    expect(isRESASError(data[404])).toStrictEqual(expectedError);
+    expect(isResasError(data[404])).toStrictEqual(expectedError);
   });
 
   test("429 Too Many Requests", () => {
@@ -43,6 +43,6 @@ describe("RESAS-APIのエラーが検出できるか", () => {
       statusCode: 429,
       errorMessage: "Too Many Requests.",
     };
-    expect(isRESASError(data[429])).toStrictEqual(expectedError);
+    expect(isResasError(data[429])).toStrictEqual(expectedError);
   });
 });
