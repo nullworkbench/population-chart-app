@@ -1,4 +1,4 @@
-import axios, { AxiosError } from "axios";
+import axios, { Axios, AxiosError } from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { resasApi, Prefecture, isResasError } from "@/libs/ResasApi";
@@ -22,7 +22,11 @@ export default async function handler(
         res.status(200).json(axiosRes.data["result"] as Prefecture[]);
       }
     })
-    .catch((error: AxiosError) => {
-      res.writeHead(Number(error.code ?? 500), error.message);
+    .catch((error) => {
+      if (axios.isAxiosError(error) && error.response) {
+        res.writeHead(Number(error.response.status), error.message);
+      } else {
+        console.log(`Error getting prefectures: ${error}`);
+      }
     });
 }
