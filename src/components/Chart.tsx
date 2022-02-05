@@ -33,14 +33,14 @@ const defaultChartOptions: Highcharts.Options = {
   },
 };
 
-const Chart: React.FC<Props> = (prop) => {
+const Chart: React.FC<Props> = (props) => {
   return (
     <>
       <HighchartsReact
         highcharts={Highcharts}
         options={{
           ...defaultChartOptions,
-          ...prop.chartOptions,
+          ...props.chartOptions,
         }}
       />
     </>
