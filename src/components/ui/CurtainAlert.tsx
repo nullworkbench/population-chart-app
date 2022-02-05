@@ -7,13 +7,21 @@
 
 type Props = {
   isShow: boolean;
+  backgroundColor?: string;
   children: React.ReactNode;
 };
 
 import styled from "styled-components";
 
 const CurtainAlert: React.FC<Props> = (props) => {
-  return <Div className={props.isShow ? "show" : ""}>{props.children}</Div>;
+  return (
+    <Div
+      className={props.isShow ? "show" : ""}
+      style={{ backgroundColor: props.backgroundColor ?? undefined }}
+    >
+      {props.children}
+    </Div>
+  );
 };
 
 export default CurtainAlert;
