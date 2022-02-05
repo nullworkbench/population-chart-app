@@ -6,6 +6,7 @@ import { Prefecture, Population, getPopulation } from "@/libs/ResasApi";
 import SelectPrefectures from "@/components/SelectPrefectures";
 import Chart from "@/components/Chart";
 import Highcharts from "highcharts";
+import CurtainAlert from "@/components/ui/CurtainAlert";
 
 const Home: NextPage = () => {
   // 選択中の都道府県のPrefCode
@@ -68,10 +69,17 @@ const Home: NextPage = () => {
       </SelectPrefsWrapper>
 
       <ChartWrapper>
+        {/* 人口情報取得中の場合は読み込み中の表示をする */}
+        <CurtainAlert
+          isShow={selectedPrefs.length != chartOptions.series?.length}
+          backgroundColor="#f1f1f1c7"
+        >
+          <p>読み込み中です…</p>
+        </CurtainAlert>
         {/* 都道府県を選択していないときは選択を促すメッセージを表示 */}
-        <SelectPrefsAlert className={selectedPrefs.length == 0 ? "show" : ""}>
+        <CurtainAlert isShow={selectedPrefs.length == 0}>
           <p>都道府県を選択すると、ここに総人口推移のグラフが表示されます。</p>
-        </SelectPrefsAlert>
+        </CurtainAlert>
         {/* グラフ */}
         <Chart chartOptions={chartOptions} />
       </ChartWrapper>
@@ -85,35 +93,7 @@ const SelectPrefsWrapper = styled.div`
 
 const ChartWrapper = styled.div`
   position: relative;
-`;
-
-const SelectPrefsAlert = styled.div`
-  // flex
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // position
-  position: absolute;
-  z-index: 50;
-  top: 0;
-  left: 0;
-  // size
-  width: 100%;
-  height: 103%;
-  // style
-  background: #f1f1f1;
-  border-radius: 1rem;
-  padding: 2rem;
-  text-align: center;
-
-  // transition
-  transition: opacity 0.4s, visibility 0.4s;
-  opacity: 0;
-  visibility: hidden;
-  &.show {
-    opacity: 1;
-    visibility: visible;
-  }
+  z-index: 0;
 `;
 
 export default Home;
