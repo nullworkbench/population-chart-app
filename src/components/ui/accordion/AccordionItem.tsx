@@ -13,11 +13,11 @@ type Props = {
   openDefault?: boolean;
 };
 
-const Accordion: React.FC<Props> = (prop) => {
+const Accordion: React.FC<Props> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    if (prop.openDefault == true) {
+    if (props.openDefault == true) {
       toggleIsOpen();
     }
     // mounted時に実行したいのでルールを無効化
@@ -47,12 +47,12 @@ const Accordion: React.FC<Props> = (prop) => {
     <Wrapper className="AccordionItem">
       {/* 開閉ボタン */}
       <AccordionButton onClick={() => toggleIsOpen()}>
-        <div>{prop.title}</div>
+        <div>{props.title}</div>
         <AccordionIcon className={isOpen ? "isOpen" : ""} />
       </AccordionButton>
       {/* 伸縮して表示が切り替わるコンテンツ */}
       <AccordionContentWrapper ref={contentWrapperRef}>
-        <AccordionContent>{prop.children}</AccordionContent>
+        <AccordionContent>{props.children}</AccordionContent>
       </AccordionContentWrapper>
     </Wrapper>
   );
