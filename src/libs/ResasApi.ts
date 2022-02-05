@@ -10,7 +10,7 @@ import axios from "axios";
 import useSWR from "swr";
 
 // RESAS-API独自エラーを出す用の型
-export type RESASError = {
+export type ResasError = {
   statusCode: number;
   errorMessage: string;
 };
@@ -64,7 +64,7 @@ export async function getPopulation(
 }
 
 // 取得は成功しているが、RESAS-APIのエラーがあるか判定する
-export function isRESASError(data: any): RESASError | void {
+export function isResasError(data: any): ResasError | void {
   const objKeys = Object.keys(data);
   if (objKeys.includes("statusCode")) {
     // statusCodeがあるときは何らかのエラーが発生している

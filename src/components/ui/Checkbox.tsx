@@ -6,14 +6,14 @@ type Props = {
   handleOnChange: Function;
 };
 
-const Checkbox: React.FC<Props> = (prop) => {
+const Checkbox: React.FC<Props> = (props) => {
   return (
     <Label>
       <Input
-        defaultChecked={prop.checked}
-        onChange={(e) => prop.handleOnChange(e)}
+        defaultChecked={props.checked}
+        onChange={(e) => props.handleOnChange(e)}
       />
-      <span>{prop.label}</span>
+      <span>{props.label}</span>
     </Label>
   );
 };
