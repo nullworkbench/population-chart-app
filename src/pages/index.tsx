@@ -2,14 +2,14 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { Prefecture, Population, getPopulation } from "@/libs/ResasApi";
+import { Prefecture, getPopulation } from "@/libs/ResasApi";
 import SelectPrefectures from "@/components/SelectPrefectures";
 import Chart from "@/components/Chart";
 import Highcharts from "highcharts";
 import CurtainAlert from "@/components/ui/CurtainAlert";
 
 const Home: NextPage = () => {
-  // 選択中の都道府県のPrefCode
+  // 選択中の都道府県のPref
   const [selectedPrefs, setSelectedPrefs] = useState<Prefecture[]>([]);
 
   // グラフの設定
