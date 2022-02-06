@@ -32,7 +32,7 @@ const defaultChartOptions: Highcharts.Options = {
   chart: { marginLeft: 80 },
   // X軸のラベル
   xAxis: {
-    title: { text: "年度", align: "high", offset: 0, x: 10, y: 25 },
+    title: { text: "年", align: "high", offset: 0, x: 10, y: 25 },
   },
   yAxis: {
     title: {
