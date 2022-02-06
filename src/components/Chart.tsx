@@ -6,9 +6,27 @@ type Props = {
   chartOptions: Highcharts.Options;
 };
 
+// 入力をカンマ区切りの数値にして返す
+const thousandsSepFormat = (str: string | number) =>
+  Highcharts.numberFormat(Number(str), 0, ",", ",");
+
 // デフォルトのグラフの設定
 const defaultChartOptions: Highcharts.Options = {
-  //グラフタイトル
+  // ホバー時に表示される情報
+  tooltip: {
+    useHTML: true,
+    headerFormat: '<table><tr><th colspan="2">{point.x}年</th></tr>',
+    pointFormatter: function () {
+      return `<tr>
+      <td><span style="color:${this.color}">&#9679; </span>
+      ${this.series.name}: </td>
+      <td style="text-align: right">
+        <b>${thousandsSepFormat(this.y ?? 0)}人</b>
+      </td></tr>`;
+    },
+    footerFormat: "</table>",
+  },
+  // グラフタイトル
   title: { text: "都道府県別の総人口推移", margin: 30 },
   subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
   chart: { marginLeft: 80 },
@@ -27,7 +45,7 @@ const defaultChartOptions: Highcharts.Options = {
     },
     labels: {
       formatter: function () {
-        return Highcharts.numberFormat(Number(this.value), 0, ",", ",");
+        return thousandsSepFormat(this.value);
       },
     },
   },
