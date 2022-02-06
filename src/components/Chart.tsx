@@ -12,6 +12,7 @@ const thousandsSepFormat = (str: string | number) =>
 
 // デフォルトのグラフの設定
 const defaultChartOptions: Highcharts.Options = {
+  // ホバー時に表示される情報
   tooltip: {
     useHTML: true,
     headerFormat: '<table><tr><th colspan="2">{point.x}年</th></tr>',
@@ -25,7 +26,7 @@ const defaultChartOptions: Highcharts.Options = {
     },
     footerFormat: "</table>",
   },
-  //グラフタイトル
+  // グラフタイトル
   title: { text: "都道府県別の総人口推移", margin: 30 },
   subtitle: { text: "出典：内閣府 地方創生推進室 地域経済分析システム" },
   chart: { marginLeft: 80 },
@@ -44,7 +45,7 @@ const defaultChartOptions: Highcharts.Options = {
     },
     labels: {
       formatter: function () {
-        return Highcharts.numberFormat(Number(this.value), 0, ",", ",");
+        return thousandsSepFormat(this.value);
       },
     },
   },
